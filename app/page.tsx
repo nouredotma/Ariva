@@ -6,6 +6,7 @@ import Ourproducts from "@/components/our-products"
 import PopularProducts from "@/components/popular-products"
 import WhatWeOffer from "@/components/what-we-offer"
 import Testimonials from "@/components/testimonials"
+import Subscription from "@/components/subscription"
 import Footer from "@/components/footer"
 
 export default function HomePage() {
@@ -16,6 +17,7 @@ export default function HomePage() {
       <Ourproducts />
       <PopularProducts />
       <Testimonials />
+      <Subscription />
       <WhatWeOffer />
       <Footer />
     </main>
