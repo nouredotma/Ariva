@@ -1,10 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
 import ProductsGrid from "./products-grid"
 import { bestSellers, type Product } from "@/lib/products-data"
-import { ArrowRight } from "lucide-react"
 
 export default function PopularProducts() {
   const [bestProducts, setBestProducts] = useState<Product[]>([])
@@ -25,19 +23,15 @@ export default function PopularProducts() {
   }, [])
 
   return (
-    <section className="relative w-full py-12 md:py-24 bg-white">
-      <div className="max-w-full mx-auto px-4 md:px-12 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8">
-          <h2 className="text-2xl md:text-4xl font-bold font-fauna text-primary tracking-tight">
-            Popular Products
+    <section className="relative w-full py-6 bg-white">
+      <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
+        <div className="flex flex-col items-center text-center mb-6">
+          <h2 className="text-2xl md:text-4xl font-bold font-fauna text-primary tracking-tight mb-2">
+            Nos Produits Populaires
           </h2>
-          
-          <Link href="/products" className="group flex items-center gap-4 text-primary transition-all whitespace-nowrap pt-4 md:pt-0">
-            <span className="text-lg font-medium border-b border-primary pb-0.5 group-hover:opacity-70 font-fauna">View All</span>
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-[#fbfbe5] group-hover:scale-110 transition-transform">
-              <ArrowRight className="w-5 h-5" />
-            </div>
-          </Link>
+          <p className="text-sm md:text-base text-neutral-600 max-w-2xl font-medium">
+            Découvrez notre sélection des produits naturels les plus appréciés
+          </p>
         </div>
 
         <div className="w-full">

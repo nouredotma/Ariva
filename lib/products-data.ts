@@ -21,7 +21,10 @@ export interface Product {
 }
 
 // Single image used across all products for demonstration
-const PRODUCT_IMAGE = "https://images.unsplash.com/photo-1587049352851-8d4e89133924?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+const PRODUCT_IMAGE = "/p1.jpg"
+
+// Single image used across all categories for demonstration
+const CATEGORY_IMAGE = "https://images.unsplash.com/photo-1587049352851-8d4e89133924?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Db b"
 
 export interface Category {
   id: string
@@ -35,37 +38,37 @@ export const categories: Category[] = [
     id: "cat-1",
     name: "Honey",
     shortDescription: "Pure, natural honey from the Middle Atlas",
-    image: PRODUCT_IMAGE,
+    image: CATEGORY_IMAGE,
   },
   {
     id: "cat-2",
     name: "Herbal Tinctures & Capsules",
     shortDescription: "Concentrated herbal extracts",
-    image: PRODUCT_IMAGE,
+    image: CATEGORY_IMAGE,
   },
   {
     id: "cat-3",
     name: "Essential Oils & Aromatherapy",
     shortDescription: "Steam-distilled oils for relaxation",
-    image: PRODUCT_IMAGE,
+    image: CATEGORY_IMAGE,
   },
   {
     id: "cat-4",
     name: "Argan Oil",
     shortDescription: "100% pure organic argan oil",
-    image: PRODUCT_IMAGE,
+    image: CATEGORY_IMAGE,
   },
   {
     id: "cat-5",
     name: "Natural Cosmetics",
     shortDescription: "Organic skin and body care",
-    image: PRODUCT_IMAGE,
+    image: CATEGORY_IMAGE,
   },
   {
     id: "cat-6",
     name: "Spices",
     shortDescription: "Authentic Moroccan spices",
-    image: PRODUCT_IMAGE,
+    image: CATEGORY_IMAGE,
   },
 ]
 

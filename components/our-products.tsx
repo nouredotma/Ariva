@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { categories, type Category } from "@/lib/products-data"
-import { ArrowRight, Package } from "lucide-react"
+import { bestCategories, type Category } from "@/lib/products-data"
+import { ArrowRight, Package, Heart } from "lucide-react"
 import { motion } from "framer-motion"
 import { Skeleton } from "@/components/ui/skeleton"
 
@@ -32,6 +32,14 @@ const OurProductsBottomShape = ({ className }: { className?: string }) => (
   </svg>
 );
 
+
+const CategoryBridgeShape = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 1000 40" preserveAspectRatio="none" className={className} fill="currentColor">
+    {/* Clean horizontal sweep connecting the rounded pill centers to a flattened 10-unit thick bottom line */}
+    <path d="M 0 0 C 25 0, 25 30, 50 30 L 486 30 L 493 10 L 500 20 L 507 10 L 514 30 L 950 30 C 975 30, 975 0, 1000 0 L 1000 40 L 0 40 Z" />
+  </svg>
+);
+
 export default function OurProducts() {
   const [cats, setCats] = useState<Category[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -41,7 +49,7 @@ export default function OurProducts() {
       setIsLoading(true)
       
       // Get categories from local data
-      setCats(categories)
+      setCats(bestCategories)
       setIsLoading(false)
     }
 
@@ -57,15 +65,25 @@ export default function OurProducts() {
       <OurProductsBottomShape className="absolute top-[99.5%] left-0 w-full h-[100px] md:h-[180px] text-[#fbfbe5]" />
 
       <div className="max-w-full mx-auto px-4 md:px-12 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8">
-          <h2 className="text-2xl md:text-4xl font-bold font-fauna text-primary tracking-tight">
-            Shop by Category
-          </h2>
+        <div className="w-full flex items-end justify-between mb-8 text-[#fbfbe5] gap-0">
           
-          <Link href="/products" className="group flex items-center gap-4 text-primary transition-all whitespace-nowrap pt-4 md:pt-0">
-            <span className="text-lg font-medium border-b border-primary pb-0.5 group-hover:opacity-70 font-fauna">View All</span>
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-[#fbfbe5] group-hover:scale-110 transition-transform">
-              <ArrowRight className="w-5 h-5" />
+          {/* Left Title - Full Rounded */}
+          <div className="bg-primary h-10 md:h-14 rounded-full px-5 md:px-8 flex items-center justify-center shrink-0 relative z-10">
+            <h2 className="text-sm md:text-xl font-bold font-fauna tracking-tight whitespace-nowrap pt-1">
+              Shop by Category
+            </h2>
+          </div>
+          
+          {/* Center Bridge - Perfectly tucked behind the semi-circles to merge beautifully at the tangency point */}
+          <div className="flex-1 h-10 md:h-14 relative z-0 -mx-5 md:-mx-7 flex items-end">
+            <CategoryBridgeShape className="w-full h-full text-primary" />
+          </div>
+
+          {/* Right Link - Full Rounded with reduced padding */}
+          <Link href="/products" className="bg-primary h-10 md:h-14 rounded-full px-4 md:px-6 flex items-center justify-center gap-2 group shrink-0 relative z-10">
+            <span className="text-xs md:text-base font-medium border-b border-[#fbfbe5] pb-0.5 font-fauna whitespace-nowrap">View all</span>
+            <div className="bg-[#fbfbe5] rounded-full p-0.5 md:p-1 text-primary">
+              <ArrowRight className="w-3 h-3 md:w-4 md:h-4 stroke-3" />
             </div>
           </Link>
         </div>
@@ -75,7 +93,7 @@ export default function OurProducts() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
               {[...Array(4)].map((_, index) => (
                 <div key={index} className="h-full flex flex-col bg-white border border-neutral-100/50 shadow-sm rounded-xs md:rounded-md p-2">
-                  <Skeleton className="relative aspect-[3/4] w-full rounded-xs md:rounded-md rounded-b-none mb-3" />
+                  <Skeleton className="relative aspect-3/4 w-full rounded-xs md:rounded-md rounded-b-none mb-3" />
                   <div className="flex flex-col grow gap-2 p-1 md:py-1 md:px-2">
                     <Skeleton className="w-3/4 h-4 md:h-6" />
                     <Skeleton className="w-full h-8 md:h-10 rounded-full mt-auto" />
@@ -108,7 +126,7 @@ export default function OurProducts() {
                       className="group relative transition-all duration-300 h-full flex flex-col bg-[#fbfbe5] hover:bg-[#c1d1be] rounded-xs md:rounded-md overflow-hidden"
                     >
                       {/* Image Section */}
-                      <div className="relative aspect-[3/4] overflow-hidden rounded-xs md:rounded-md rounded-b-none md:rounded-b-none p-2 md:p-4 pb-0 md:pb-0 group/imgContainer">
+                      <div className="relative aspect-3/4 overflow-hidden rounded-xs md:rounded-md rounded-b-none md:rounded-b-none p-2 md:p-4 pb-0 md:pb-0 group/imgContainer">
                         <div className="relative w-full h-full">
                           <Image
                             src={cat.image || "/placeholder.svg"}
@@ -119,16 +137,27 @@ export default function OurProducts() {
                             className="object-cover rounded-xs md:rounded-md"
                           />
                         </div>
+
+                        {/* Heart Button */}
+                        <button 
+                          className="absolute top-6 right-6 p-1 rounded-full transition-all duration-300 z-10 active:scale-95 group/heart cursor-pointer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            // Favorite logic would go here
+                          }}
+                        >
+                          <Heart size={28} className="fill-current text-[#fdfdf0]/50 hover:text-[#f3bcbc] active:text-[#df2727] focus:text-[#df2727] transition-colors duration-300" />
+                        </button>
                       </div>
 
                       {/* Content Section */}
                       <div className="py-2 px-2 md:px-4 pb-2 md:pb-4 flex flex-col grow">
-                        <h3 className="text-sm md:text-lg font-semibold group-hover:text-primary transition-colors line-clamp-1 w-full text-left font-fauna mb-1" style={{ color: 'var(--neutral-900)' }}>
+                        <h3 className="text-sm md:text-lg font-bold group-hover:text-primary transition-colors line-clamp-1 w-full text-left font-fauna mb-4" style={{ color: 'var(--neutral-900)' }}>
                           {cat.name}
                         </h3>
 
                         <div className="flex flex-row justify-between items-end gap-2 mt-auto">
-                          <p className="text-[10px] md:text-xs text-neutral-500 line-clamp-2 text-left mb-1 min-h-[2.5em] grow">
+                          <p className="text-xs md:text-base text-neutral-700 line-clamp-2 text-left mb-1 min-h-[2.5em] grow">
                             {cat.shortDescription}
                           </p>
 
