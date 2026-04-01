@@ -86,21 +86,21 @@ export default function Testimonials() {
       <TestimonialsBottomShape className="absolute top-[99%] left-0 w-full h-[100px] md:h-[180px] text-primary" />
       
       {/* Section Header with padding */}
-      <div className="max-w-full mx-auto px-4 md:px-12 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
-          <div className="space-y-3 text-left">
-            <h2 className="text-3xl md:text-5xl font-bold font-fauna text-[#fbfbe5] tracking-tight">
+      <div className="max-w-full mx-auto px-2 md:px-12 relative z-10">
+        <div className="flex flex-row justify-between items-end mb-6 gap-2">
+          <div className="space-y-1 md:space-y-3 text-left">
+            <h2 className="text-xl md:text-5xl font-bold font-fauna text-[#fbfbe5] tracking-tight whitespace-nowrap md:whitespace-pre-line">
               Explorez les avis
             </h2>
-            <p className="text-base md:text-xl font-light text-[#fbfbe5]/80 max-w-2xl font-fauna">
+            <p className="text-[10px] md:text-xl font-light text-[#fbfbe5]/80 max-w-[200px] md:max-w-2xl font-fauna leading-tight">
               Explorez les expériences partagées par nos clients
             </p>
           </div>
           
-          <a href="/reviews" className="group flex items-center gap-4 text-[#fbfbe5] transition-all whitespace-nowrap">
-            <span className="text-lg font-medium border-b border-[#fbfbe5] pb-0.5 group-hover:opacity-70 font-fauna">View All</span>
-            <div className="w-10 h-10 rounded-full bg-[#fbfbe5] flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-              <ArrowRight className="w-5 h-5" />
+          <a href="/reviews" className="group flex items-center gap-2 md:gap-4 text-[#fbfbe5] transition-all whitespace-nowrap shrink-0">
+            <span className="text-sm md:text-lg font-medium border-b border-[#fbfbe5] pb-0.5 group-hover:opacity-70 font-fauna">View All</span>
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#fbfbe5] flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </div>
           </a>
         </div>
@@ -123,14 +123,14 @@ export default function Testimonials() {
           <SliderContainer>
             {testimonials.map((testimonial, i) => (
               <Slider key={i} className="basis-full sm:basis-1/2 lg:basis-1/3">
-                <div className="py-2 h-full px-4 md:px-5 group cursor-pointer">
+                <div className="py-2 h-full px-2 md:px-5 group cursor-pointer">
                   {/* The 'Double'/Solid Shadow Layer */}
                   <div className="relative h-full">
-                    <div className="absolute inset-0 bg-[#fbfbe5]/50 rounded-3xl transition-all duration-500 group-hover:translate-x-3 group-hover:translate-y-3" />
+                    <div className="absolute inset-0 bg-[#fbfbe5]/50 rounded-xl transition-all duration-500 group-hover:translate-x-3 group-hover:translate-y-3" />
                     
                     {/* Main Card */}
                     <div 
-                      className="relative rounded-3xl transition-all duration-500 p-8 h-full flex flex-col border border-primary/5 bg-[#fbfbe5] group-hover:-translate-x-1 group-hover:-translate-y-1" 
+                      className="relative rounded-xl transition-all duration-500 p-8 h-full flex flex-col border border-primary/5 bg-[#fbfbe5] group-hover:-translate-x-1 group-hover:-translate-y-1" 
                     >
                       <div className="flex justify-between items-start mb-6">
                         <div className="space-y-4">

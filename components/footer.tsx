@@ -64,7 +64,7 @@ export default function Footer() {
       {/* Absolute Top Shape acting as a wave divider */}
       <FooterTopShape className="absolute bottom-full left-0 w-full h-[40px] md:h-[80px] text-primary" />
       
-      <div className="max-w-full mx-auto px-4 md:px-12 relative">
+      <div className="max-w-full mx-auto px-2 md:px-12 relative">
         {/* Top Row: Logo */}
         <div className="relative flex justify-center items-center pt-0 md:pt-8 pb-0 md:pb-8 border-b-[4px] border-[#fbfbe5] mb-12">
           {/* Edge Half Circles */}

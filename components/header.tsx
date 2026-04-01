@@ -219,13 +219,13 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
               >
                 <div className="h-full flex flex-col">
                   {/* Header with close button */}
-                  <div className="flex items-center justify-between px-3 py-4" style={{ backgroundColor: 'var(--color-bg-dark)' }}>
+                  <div className="flex items-center justify-between px-3 py-4" style={{ backgroundColor: '#fbfbe5' }}>
                     <Link href="/" className="inline-block" onClick={() => setIsMenuOpen(false)}>
                       <Image src="/logo.png" alt="Alhor Parfum Logo" width={128} height={40} className="h-10 w-auto object-contain" priority sizes="(max-width: 768px) 96px, 128px" />
                     </Link>
                     <button
                       onClick={() => setIsMenuOpen(false)}
-                      className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+                      className="w-8 h-8 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors"
                     >
                       <svg
                         width="16"
@@ -236,7 +236,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
                         aria-hidden="true"
                       >
                         <path
-                          stroke="#ffffff"
+                          stroke="var(--primary)"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth={2}

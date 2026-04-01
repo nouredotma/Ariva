@@ -64,7 +64,7 @@ export default function OurProducts() {
       {/* Absolute Bottom Shape - positioned relative to section bottom */}
       <OurProductsBottomShape className="absolute top-[99.5%] left-0 w-full h-[100px] md:h-[180px] text-[#fbfbe5]" />
 
-      <div className="max-w-full mx-auto px-4 md:px-12 relative z-10">
+      <div className="max-w-full mx-auto px-2 md:px-12 relative z-10">
         <div className="w-full flex items-end justify-between mb-8 text-[#fbfbe5] gap-0">
           
           {/* Left Title - Full Rounded */}

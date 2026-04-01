@@ -60,7 +60,7 @@ export default function WhatWeOffer() {
         <div className="absolute bottom-0 left-0 w-16 h-16 bg-[#e7cb98] rounded-full opacity-100" />
       </div>
 
-      <div className="max-w-full mx-auto px-4 md:px-12 relative z-10">
+      <div className="max-w-full mx-auto px-2 md:px-12 relative z-10">
         <div className="text-center mb-16 md:mb-24 space-y-2 relative">
           <h2 className="text-4xl md:text-6xl font-bold font-fauna text-neutral-900 tracking-tight">
             Our Promise
@@ -70,7 +70,7 @@ export default function WhatWeOffer() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 md:gap-8">
           {offers.map((offer, index) => (
             <div 
               key={index} 
@@ -79,10 +79,10 @@ export default function WhatWeOffer() {
               <div className="mb-6">
                 {offer.icon}
               </div>
-              <h3 className="text-xl md:text-2xl font-bold font-fauna mb-4 text-neutral-900 leading-tight">
+              <h3 className="text-base md:text-2xl font-bold font-fauna mb-2 md:mb-4 text-neutral-900 leading-tight">
                 {offer.title}
               </h3>
-              <p className="text-sm md:text-base text-neutral-500 leading-relaxed mb-6 font-light">
+              <p className="text-xs md:text-base text-neutral-500 leading-relaxed mb-4 md:mb-6 font-light line-clamp-3 md:line-clamp-none">
                 {offer.description}
               </p>
               

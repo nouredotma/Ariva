@@ -11,14 +11,14 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 items-center">
           {/* Left Column: Content */}
           <div className="flex flex-col space-y-8 text-center lg:text-left order-1 lg:order-1 px-4 lg:px-0 lg:pr-12">
-            <div className="space-y-6">
+            <div className="space-y-3">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="space-y-2"
               >
-                <div className="inline-block px-3 py-1 rounded-full bg-[#99f899] text-primary text-sm font-medium tracking-wider">
+                <div className="inline-block px-3 py-1 rounded-full bg-[#99f899] text-primary text-xs md:text-sm font-medium tracking-wider">
                   The Purest Harvest
                 </div>
                 <h1 className="text-4xl md:text-6xl text-foreground tracking-tight font-fauna leading-[1.3] lg:leading-[1.1]">
@@ -31,7 +31,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-xl mx-auto lg:mx-0 font-fauna"
+                className="text-sm md:text-xl text-muted-foreground font-light leading-relaxed max-w-xl mx-auto lg:mx-0 font-fauna"
               >
                 Fresh, 100% Certified Organic goods curated directly from local cooperatives nestled in the Atlas Mountains and Souss Valley.
               </motion.p>
@@ -45,7 +45,7 @@ export default function Hero() {
             >
               <Button 
                 size="lg"
-                className="h-12 md:h-14 px-10! rounded-full bg-primary hover:bg-primary-600 text-primary-foreground transition-all duration-300 text-base font-normal font-fauna group"
+                className="h-12 md:h-14 px-5! md:px-10! rounded-full bg-primary hover:bg-primary-600 text-primary-foreground transition-all duration-300 text-base font-normal font-fauna group"
                 asChild
               >
                 <a href="/products" className="flex items-center justify-center">
@@ -57,7 +57,7 @@ export default function Hero() {
               <Button 
                 size="lg"
                 variant="outline"
-                className="h-12 md:h-14 px-4 md:px-8 rounded-full border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 text-foreground transition-all duration-300 font-light text-sm md:text-base font-fauna flex-1 md:flex-none"
+                className="h-12 md:h-14 px-5! md:px-10! rounded-full border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 text-foreground transition-all duration-300 font-light text-sm md:text-base font-fauna md:flex-none"
                 asChild
               >
                 <a href="/about" className="flex items-center justify-center">
