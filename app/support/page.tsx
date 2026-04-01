@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { Container } from "@/components/ui/container"
-import { ChevronRight, Sparkles, Truck, RefreshCcw, Ruler, ShieldCheck, FileText } from "lucide-react"
+import { ChevronRight, Sparkles, Truck, RefreshCcw, Ruler, ShieldCheck, FileText, CreditCard, Headphones } from "lucide-react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -118,6 +118,65 @@ const sections = [
     ),
   },
   {
+    id: "payments",
+    title: "Secure Payments",
+    icon: CreditCard,
+    content: (
+      <div className="space-y-6">
+        <p>Your security is our top priority. We use industry-leading encryption and security protocols to ensure your payment information is always protected.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+            <h4 className="font-bold text-primary mb-2 font-fauna tracking-wide">Accepted Payment Methods</h4>
+            <p className="text-sm text-muted-foreground mb-4">We accept various secure payment options to provide you with a smooth checkout experience:</p>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>• Credit/Debit Cards (Visa, Mastercard)</li>
+              <li>• PayPal</li>
+              <li>• Bank Transfer (for domestic orders)</li>
+              <li>• Cash on Delivery (available in select areas of Morocco)</li>
+            </ul>
+          </div>
+          <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+            <h4 className="font-bold text-primary mb-2 font-fauna tracking-wide">Data Protection</h4>
+            <p className="text-sm text-muted-foreground">We never store your full credit card details on our servers. All transactions are processed through encrypted payment gateways that comply with the highest security standards (PCI DSS).</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "customer-care",
+    title: "Customer Support",
+    icon: Headphones,
+    content: (
+      <div className="space-y-6">
+        <p>Need assistance? Our dedicated customer care team is here to help you with any questions about our products, your order, or shipping.</p>
+        <div className="space-y-4">
+          <h4 className="font-bold text-neutral-900 font-fauna tracking-wide">Contact Options</h4>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 rounded-xl border border-neutral-100 bg-neutral-50/50">
+              <p className="font-bold text-sm mb-1">Email Us</p>
+              <p className="text-xs text-primary font-medium">support@ariva.ma</p>
+            </div>
+            <div className="p-4 rounded-xl border border-neutral-100 bg-neutral-50/50">
+              <p className="font-bold text-sm mb-1">WhatsApp</p>
+              <p className="text-xs text-primary font-medium">+212 600-000000</p>
+            </div>
+            <div className="p-4 rounded-xl border border-neutral-100 bg-neutral-50/50">
+              <p className="font-bold text-sm mb-1">Office Hours</p>
+              <p className="text-xs text-muted-foreground">Mon-Fri: 9am - 6pm (GMT+1)</p>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground">We typically respond to all inquiries within 24 business hours. For immediate assistance regarding an existing order, please include your order number in your message.</p>
+          <div className="pt-4">
+            <Link href="/contact" className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-white font-bold text-sm transition-all hover:bg-primary/90">
+              Go to Contact Page
+            </Link>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     id: "privacy",
     title: "Privacy Policy",
     icon: ShieldCheck,
@@ -131,8 +190,8 @@ const sections = [
           <h4 className="font-bold text-neutral-900 font-fauna tracking-wide">How We Use Your Information</h4>
           <p className="text-sm text-muted-foreground">We use the order information that we collect generally to fulfill any orders placed through the site (including processing your payment information, arranging for shipping, and providing you with invoices and/or order confirmations).</p>
           
-          <h4 className="font-bold text-neutral-900 font-fauna tracking-wide">Data Retention</h4>
-          <p className="text-sm text-muted-foreground">When you place an order through the site, we will maintain your order information for our records unless and until you ask us to delete this information.</p>
+          <h4 className="font-bold text-neutral-900 font-fauna tracking-wide">Data Protection</h4>
+          <p className="text-sm text-muted-foreground">We will maintain your order information for our records unless and until you ask us to delete this information.</p>
         </div>
       </div>
     ),

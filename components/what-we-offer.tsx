@@ -1,4 +1,5 @@
 import { Box, CreditCard, Undo2, Headphones, ArrowUpRight } from "lucide-react"
+import Link from "next/link"
 
 export default function WhatWeOffer() {
   const offers = [
@@ -7,28 +8,28 @@ export default function WhatWeOffer() {
       title: "Worldwide Delivery",
       description: "We ensure your comfort reaches you quickly and reliably, anywhere in the world.",
       linkText: "shipping details",
-      linkHref: "/shipping"
+      linkHref: "/support#shipping"
     },
     {
       icon: <CreditCard className="h-7 w-7 text-neutral-900" />,
       title: "Secure Checkout",
       description: "Your payment is fully protected by industry-leading encryption.",
       linkText: "how we protect your data",
-      linkHref: "/privacy"
+      linkHref: "/support#payments"
     },
     {
       icon: <Undo2 className="h-7 w-7 text-neutral-900" />,
       title: "30-Day Free Returns",
       description: "Not the perfect fit? Send it back on us. Hassle-free returns and exchanges for your peace of mind.",
       linkText: "Returns Policy",
-      linkHref: "/returns"
+      linkHref: "/support#returns"
     },
     {
       icon: <Headphones className="h-7 w-7 text-neutral-900" />,
       title: "24/7 Customer Care",
       description: "Our dedicated team is always here to help with any questions regarding your order.",
       linkText: "24/7 customer support",
-      linkHref: "/contact"
+      linkHref: "/support#customer-care"
     },
   ]
 
@@ -86,13 +87,16 @@ export default function WhatWeOffer() {
                 {offer.description}
               </p>
               
-              <div className="mt-auto group cursor-pointer inline-flex flex-col">
+              <Link 
+                href={offer.linkHref}
+                className="mt-auto group cursor-pointer inline-flex flex-col"
+              >
                 <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 group-hover:opacity-70 transition-opacity">
                   {offer.linkText}
                   <ArrowUpRight className="w-4 h-4" />
                 </div>
                 <div className="h-0.5 w-full bg-neutral-900 mt-1" />
-              </div>
+              </Link>
             </div>
           ))}
         </div>
