@@ -72,13 +72,8 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
         <Container className="max-w-full mx-auto px-2 md:px-12">
           {/* Mobile layout - logo left, menu right */}
           <div className="md:hidden flex h-16 items-center justify-between">
-            {/* Left: Logo */}
-            <Link href="/" className="flex items-center z-10">
-              <Image src="/logo.png" alt="Ariva Logo" width={128} height={56} className="h-12 w-auto object-contain" priority sizes="(max-width: 768px) 112px, 128px" />
-            </Link>
-
-            {/* Right: Menu Button */}
-            <div className="flex items-center gap-2 z-20">
+            {/* Left: Menu Button - fixed width to balance with right side */}
+            <div className="w-16 flex items-center justify-start">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className={cn(
@@ -103,6 +98,38 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
                     className="transition-all duration-300"
                   />
                 </svg>
+              </button>
+            </div>
+
+            {/* Center: Logo - absolute centering within the flex container */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+              <Link href="/" className="flex items-center z-10 shrink-0">
+                <Image src="/logo.png" alt="Ariva Logo" width={112} height={40} className="h-10 w-auto object-contain" priority sizes="(max-width: 768px) 112px, 128px" />
+              </Link>
+            </div>
+
+            {/* Right: Icons - fixed width matching left side to keep logo perfectly centered */}
+            <div className="w-20 flex items-center justify-end gap-3 z-20">
+              <Link
+                href="/account"
+                className="flex items-center justify-center text-gray-800 hover:text-secondary"
+                aria-label="Account"
+              >
+                <User className="w-5 h-5" />
+              </Link>
+              
+              <button
+                onClick={() => toggleCartModal()}
+                className="relative flex items-center justify-center w-8 h-8 text-gray-800 hover:text-secondary"
+                aria-label="Cart"
+              >
+                <ShoppingCart className="w-5 h-5" />
+                <span className={cn(
+                  "absolute -top-1 -right-1 w-4 h-4 rounded-full text-white text-[9px] font-bold flex items-center justify-center shadow-sm transition-colors",
+                  totalItems === 0 ? "bg-gray-400" : "bg-primary"
+                )}>
+                  {totalItems}
+                </span>
               </button>
             </div>
           </div>

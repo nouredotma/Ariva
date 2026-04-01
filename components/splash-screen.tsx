@@ -37,7 +37,7 @@ export default function SplashScreen() {
         zIndex: 9999,
         height: "100svh",
         width: "100%",
-        background: "var(--background)",
+        background: "linear-gradient(to bottom, #ffffff, #fbfbe5)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
