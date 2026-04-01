@@ -210,51 +210,29 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                   </div>
                 </div>
 
-                {/* 3. Brand & Volume */}
+                {/* 3. City & Category */}
                 <div className="flex items-center gap-2 text-sm text-neutral-500 font-medium tracking-wide">
-                  <span>{product.brand}</span>
+                  <span>{product.city}</span>
                   <span className="w-1 h-1 rounded-full bg-neutral-300" />
-                  <span>{product.volume}</span>
+                  <span className="uppercase">{product.category}</span>
                 </div>
 
-                {/* 3. Pricing (Old, New, Savings) */}
+                {/* 3. Pricing (New) */}
                 <div className="flex flex-col gap-1 pt-0.5">
-                  {product.oldPrice && (
-                    <span className="text-sm md:text-base font-light text-neutral-400 line-through">
-                      {product.oldPrice} MAD
-                    </span>
-                  )}
                   <span className="text-2xl md:text-2xl font-extrabold text-neutral-900 tracking-tight font-fauna">
                     {product.price} MAD
                   </span>
-                  {product.oldPrice && (
-                    <div className="inline-flex w-fit  text-green-500 px-0 text-[10px] md:text-xs font-bol">
-                      Save {product.oldPrice - product.price} MAD
-                    </div>
-                  )}
                 </div>
 
-                {/* 4.5 Ingredients (Styled as tags) */}
-                {product.ingredients && (
-                  <div className="flex flex-col gap-2.5 pt-2 pb-1">
-                    <h4 className="text-xs font-bold text-neutral-900 tracking-wider">
-                      Notes & Ingredients
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {product.ingredients.split(',').map((ingredient: string, i: number) => {
-                        const trimmed = ingredient.trim().replace('.', '')
-                        return (
-                          <span 
-                            key={i} 
-                            className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] md:text-xs font-medium bg-neutral-100/80 text-neutral-700 border border-neutral-200 hover:bg-neutral-200 hover:border-neutral-300 transition-colors"
-                          >
-                            {trimmed}
-                          </span>
-                        )
-                      })}
-                    </div>
-                  </div>
-                )}
+                {/* 4.5 Short Description */}
+                <div className="flex flex-col gap-2.5 pt-2 pb-1 lg:max-w-xl">
+                  <h4 className="text-xs font-bold text-neutral-900 tracking-wider">
+                    Quick Summary
+                  </h4>
+                  <p className="text-sm text-neutral-600 leading-relaxed">
+                    {product.shortDescription}
+                  </p>
+                </div>
 
                 {/* 5. Delivery Div */}
                 <div className="border-l-4 border-green-500 bg-green-50 p-2.5 flex items-center gap-2">

@@ -9,7 +9,7 @@ export interface Filters {
   minPrice?: number | null
   maxPrice?: number | null
   search?: string
-  condition?: string | null
+  category?: string | null
 }
 
 interface Props {
@@ -21,20 +21,23 @@ export default function SearchFilter({ onChange, initial }: Props) {
   const [minPrice, setMinPrice] = useState<number | "">(initial?.minPrice ?? "")
   const [maxPrice, setMaxPrice] = useState<number | "">(initial?.maxPrice ?? "")
   const [search, setSearch] = useState<string>(initial?.search ?? "")
-  const [condition, setCondition] = useState<string>(initial?.condition ?? "all")
+  const [category, setCategory] = useState<string>(initial?.category ?? "all")
 
   // Whenever the URL changes outside, update the local state if needed
   useEffect(() => {
     setSearch(initial?.search ?? "")
     setMinPrice(initial?.minPrice ?? "")
     setMaxPrice(initial?.maxPrice ?? "")
-    setCondition(initial?.condition ?? "all")
-  }, [initial?.search, initial?.minPrice, initial?.maxPrice, initial?.condition])
+    setCategory(initial?.category ?? "all")
+  }, [initial?.search, initial?.minPrice, initial?.maxPrice, initial?.category])
 
   const CONDITIONS = [
-    { name: "Men", value: "men", image: "/mens.avif" },
-    { name: "Women", value: "women", image: "/womens.avif" },
-    { name: "Unisex", value: "unisex", image: "/unisex.avif" },
+    { name: "Honey", value: "Honey", image: "/p1.png" },
+    { name: "Tinctures", value: "Herbal Tinctures & Capsules", image: "/p1.png" },
+    { name: "Essential Oils", value: "Essential Oils & Aromatherapy", image: "/p1.png" },
+    { name: "Argan Oil", value: "Argan Oil", image: "/p1.png" },
+    { name: "Cosmetics", value: "Natural Cosmetics", image: "/p1.png" },
+    { name: "Spices", value: "Spices", image: "/p1.png" },
   ]
 
   const emit = () => {
@@ -42,18 +45,18 @@ export default function SearchFilter({ onChange, initial }: Props) {
       minPrice: minPrice === "" ? null : Number(minPrice),
       maxPrice: maxPrice === "" ? null : Number(maxPrice),
       search: search || "",
-      condition: condition === "all" ? null : condition,
+      category: category === "all" ? null : category,
     })
   }
 
-  const toggleCondition = (val: string) => {
-    const newCondition = condition === val ? "all" : val
-    setCondition(newCondition)
+  const toggleCategory = (val: string) => {
+    const newCategory = category === val ? "all" : val
+    setCategory(newCategory)
     onChange({
       minPrice: minPrice === "" ? null : Number(minPrice),
       maxPrice: maxPrice === "" ? null : Number(maxPrice),
       search: search || "",
-      condition: newCondition === "all" ? null : newCondition,
+      category: newCategory === "all" ? null : newCategory,
     })
   }
 
@@ -62,12 +65,12 @@ export default function SearchFilter({ onChange, initial }: Props) {
       {/* Category Selection - Modern Cards */}
       <div className="flex flex-wrap justify-center gap-2 md:gap-8">
         {CONDITIONS.map((opt) => {
-          const isActive = condition === opt.value
+          const isActive = category === opt.value
           return (
             <button
               key={opt.value}
               type="button"
-              onClick={() => toggleCondition(opt.value)}
+              onClick={() => toggleCategory(opt.value)}
               className="relative group flex flex-col items-center gap-3 p-1 cursor-pointer outline-none w-24 md:w-36"
             >
               {/* Image Frame - Squared Rounded Box */}

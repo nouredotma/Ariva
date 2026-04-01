@@ -1,19 +1,23 @@
-export type ProductCategory = "men" | "women" | "unisex"
+export type ProductCategory =
+  "Honey" |
+  "Herbal Tinctures & Capsules" |
+  "Essential Oils & Aromatherapy" |
+  "Argan Oil" |
+  "Natural Cosmetics" |
+  "Spices"
 
 export interface Product {
   id: string
   name: string
-  brand: string
-  volume: string
+  shortDescription: string
   longDescription: string
-  ingredients: string
   mainImage: string
   thumbnailImages: string[]
   category: ProductCategory
   price: number
-  oldPrice?: number
   stock: number
-  isBest?: boolean
+  isPopular: boolean
+  city: string
 }
 
 // Single image used across all products for demonstration
@@ -22,195 +26,159 @@ const PRODUCT_IMAGE = "/p1.png"
 export const products: Product[] = [
   {
     id: "prod-1",
-    name: "Oud Wood Intense",
-    brand: "Lattafa",
-    volume: "100ml",
-    longDescription:
-      "Experience the depth and intensity of pure oud. This masculine scent blends rare spices and woods to create an unforgettable signature aroma, perfect for evening wear and special occasions. The long-lasting formula ensures you leave a memorable impression.",
-    ingredients: "Alcohol Denat., Fragrance (Parfum), Water (Aqua), Linalool, Limonene, Coumarin, Eugenol.",
+    name: "Pure Eucalyptus Honey",
+    shortDescription: "100% natural eucalyptus honey from the Middle Atlas mountains.",
+    longDescription: "Our Pure Eucalyptus Honey is harvested from the pristine forests of the Middle Atlas. Known for its distinct aromatic flavor and medicinal properties, this honey is perfect for supporting respiratory health and adding a unique depth to your morning tea.",
     mainImage: PRODUCT_IMAGE,
     thumbnailImages: [PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE],
-    category: "men",
+    category: "Honey",
     price: 180,
-    oldPrice: 220,
     stock: 15,
-    isBest: true,
+    isPopular: true,
+    city: "Ifrane",
   },
   {
     id: "prod-2",
-    name: "Floral Bloom",
-    brand: "Gucci",
-    volume: "50ml",
-    longDescription:
-      "A celebration of spring flowers, combining jasmine, rose, and lily of the valley. Perfect for everyday elegance, this fragrance slowly reveals its complex floral layers, ending with a soft string of vanilla and musk.",
-    ingredients: "Alcohol Denat., Fragrance (Parfum), Water (Aqua), Benzyl Salicylate, Citronellol, Geraniol.",
+    name: "Immune Boost Tincture",
+    shortDescription: "Concentrated herbal extract for natural immune support.",
+    longDescription: "A powerful blend of Echinacea, Elderberry, and Ginger, our Immune Boost Tincture is designed to strengthen your body's natural defenses. This concentrated formula is easily absorbed and perfect for daily wellness maintenance during seasonal changes.",
     mainImage: PRODUCT_IMAGE,
     thumbnailImages: [PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE],
-    category: "women",
+    category: "Herbal Tinctures & Capsules",
     price: 140,
-    oldPrice: 160,
     stock: 25,
-    isBest: true,
+    isPopular: true,
+    city: "Casablanca",
   },
   {
     id: "prod-3",
-    name: "Citrus Breeze",
-    brand: "Tom Ford",
-    volume: "100ml",
-    longDescription:
-      "An invigorating blend of Sicilian lemon, bergamot, and sweet orange. A clean, fresh scent perfect for any occasion. It provides an energetic and uplifting sensation that lingers comfortably throughout the day.",
-    ingredients: "Alcohol Denat., Fragrance (Parfum), Water (Aqua), Limonene, Citral, Linalool.",
+    name: "Lavender Essential Oil",
+    shortDescription: "Pure steam-distilled Lavender oil for relaxation.",
+    longDescription: "Our Lavender Essential Oil is steam-distilled from high-altitude lavender fields. Used for centuries for its calming and soothing properties, it is ideal for aromatherapy, improving sleep quality, and soothing minor skin irritations.",
     mainImage: PRODUCT_IMAGE,
     thumbnailImages: [PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE],
-    category: "unisex",
+    category: "Essential Oils & Aromatherapy",
     price: 110,
-    oldPrice: 135,
     stock: 40,
-    isBest: true,
+    isPopular: true,
+    city: "Marrakech",
   },
   {
     id: "prod-4",
-    name: "Midnight Rose",
-    brand: "Lancome",
-    volume: "75ml",
-    longDescription:
-      "A deep, sensual take on the classic rose, laced with dark berry notes and a hint of vanilla. The Midnight Rose offers a captivating allure for the modern woman who embraces elegance and mystery.",
-    ingredients: "Alcohol Denat., Fragrance (Parfum), Water (Aqua), Geraniol, Citronellol, Farnesol.",
+    name: "Organic Culinary Argan Oil",
+    shortDescription: "Toasted organic argan oil with a rich nutty flavor.",
+    longDescription: "Authentic culinary Argan Oil from the Souss-Massa region. Cold-pressed from roasted argan kernels, this 'liquid gold' is rich in Vitamin E and antioxidants. Its unique nutty taste makes it a premium addition to salads, tagines, and dipping breads.",
     mainImage: PRODUCT_IMAGE,
     thumbnailImages: [PRODUCT_IMAGE, PRODUCT_IMAGE],
-    category: "women",
+    category: "Argan Oil",
     price: 165,
-    oldPrice: 195,
     stock: 12,
-    isBest: true,
+    isPopular: true,
+    city: "Agadir",
   },
   {
     id: "prod-5",
-    name: "Bleu Intense",
-    brand: "Horizon",
-    volume: "100ml",
-    longDescription:
-      "A woody, aromatic fragrance for the man who defies convention. The profoundly sensual Eau de Parfum, infused with crisp citrus notes, offers an intense and refined trail.",
-    ingredients: "Alcohol, Parfum (Fragrance), Aqua (Water), Limonene, Linalool, Citronellol.",
+    name: "Prickly Pear Face Cream",
+    shortDescription: "Anti-aging moisturizing cream with Prickly Pear seed oil.",
+    longDescription: "Experience the ultimate hydration with our Prickly Pear Face Cream. Infused with rare Prickly Pear seed oil, it is naturally rich in Betalains and Vitamin K, providing intense nourishment and helping to reduce the appearance of fine lines and dark circles.",
     mainImage: PRODUCT_IMAGE,
     thumbnailImages: [PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE],
-    category: "men",
+    category: "Natural Cosmetics",
     price: 135,
-    oldPrice: 165,
     stock: 50,
-    isBest: true,
+    isPopular: true,
+    city: "Essaouira",
   },
   {
     id: "prod-6",
-    name: "Jasmine Mystique",
-    brand: "Lumiere",
-    volume: "50ml",
-    longDescription:
-      "Crafted with hand-picked jasmine blossoms at the break of dawn, this fragrance captures the pure, luminous essence of the flower. It is sophisticated, radiant, and endlessly beautiful.",
-    ingredients: "Alcohol Denat., Fragrance (Parfum), Water (Aqua), Benzyl Salicylate, Hexyl Cinnamal, Linalool.",
+    name: "Premium Saffron Threads",
+    shortDescription: "Grade-A saffron threads from Taliouine.",
+    longDescription: "Sourced directly from the saffron capital of Morocco, our Taliouine Saffron is hand-picked at dawn. Known for its intense color, aroma, and flavor, this spice is essential for authentic Moroccan cooking and valued for its numerous health benefits.",
     mainImage: PRODUCT_IMAGE,
     thumbnailImages: [PRODUCT_IMAGE, PRODUCT_IMAGE],
-    category: "women",
+    category: "Spices",
     price: 130,
-    oldPrice: 150,
     stock: 10,
-    isBest: true,
+    isPopular: true,
+    city: "Taliouine",
   },
   {
     id: "prod-7",
-    name: "Santal Royal",
-    brand: "Royale",
-    volume: "125ml",
-    longDescription:
-      "A mysterious, captivating fragrance for both men and women. Shrouded in an aura of oriental mystery, the woody freshness of sandalwood contrasts with the deep, intoxicating notes of leather and oud.",
-    ingredients: "Alcohol Denat., Fragrance (Parfum), Water (Aqua), Citronellol, Geraniol, Cinnamal.",
+    name: "Wild Thyme Honey",
+    shortDescription: "Strong aromatic honey with natural antibacterial properties.",
+    longDescription: "This rare Wild Thyme Honey is collected by bees from high-altitude thyme bushes. It is celebrated for its powerful antibacterial qualities and its rich, slightly spicy flavor profile. A natural remedy for sore throats and a true gourmet delight.",
     mainImage: PRODUCT_IMAGE,
     thumbnailImages: [PRODUCT_IMAGE, PRODUCT_IMAGE],
-    category: "unisex",
+    category: "Honey",
     price: 190,
-    oldPrice: 215,
     stock: 8,
-    isBest: true,
+    isPopular: true,
+    city: "Chefchaouen",
   },
   {
     id: "prod-8",
-    name: "Vanilla Gold",
-    brand: "Elegance",
-    volume: "75ml",
-    longDescription:
-      "A rich tapestry of golden vanilla and sweet amber, intertwined with smoky woods. A truly grand, enveloping scent designed for both men and women seeking an opulent and sweet everyday fragrance.",
-    ingredients: "Alcohol Denat., Fragrance (Parfum), Water (Aqua), Coumarin, Eugenol, Benzyl Benzoate.",
+    name: "Rosemary Essential Oil",
+    shortDescription: "Stimulating rosemary oil for hair and mental clarity.",
+    longDescription: "Our pure Rosemary Essential Oil is a mental stimulant that enhances focus and memory. When used in hair care, it is known to stimulate the scalp and promote healthy, thick hair growth through improved circulation.",
     mainImage: PRODUCT_IMAGE,
     thumbnailImages: [PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE],
-    category: "unisex",
+    category: "Essential Oils & Aromatherapy",
     price: 110,
-    oldPrice: 135,
     stock: 30,
-    isBest: true,
+    isPopular: true,
+    city: "Settat",
   },
   {
     id: "prod-9",
-    name: "Royal Oud",
-    brand: "Alhor Elite",
-    volume: "100ml",
-    longDescription:
-      "Royal Oud is the pinnacle of luxury, combining the deep, woody resonance of aged Cambodian Oud with the delicate, honeyed sweetness of Bulgarian Rose. A fragrance designed for those who command presence and appreciate the finer details of oriental products.",
-    ingredients: "Alcohol Denat., Aquilaria Agallocha (Oud) Oil, Rosa Damascena Flower Oil, Santalum Album (Sandalwood) Oil, Ambergris, Benzyl Salicylate.",
+    name: "Cosmetic Argan Oil",
+    shortDescription: "100% pure organic argan oil for skin and hair.",
+    longDescription: "This pure, unscented Argan Oil is a multi-purpose beauty treatment. Rich in fatty acids and Vitamin E, it deeply hydrates the skin, strengthens nails, and adds a brilliant shine to hair while taming frizz and split ends.",
     mainImage: PRODUCT_IMAGE,
     thumbnailImages: [PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE],
-    category: "unisex",
+    category: "Argan Oil",
     price: 245,
-    oldPrice: 290,
     stock: 12,
-    isBest: true,
+    isPopular: true,
+    city: "Agadir",
   },
   {
     id: "prod-10",
-    name: "Desert Rose",
-    brand: "Alhor Elite",
-    volume: "50ml",
-    longDescription:
-      "Desert Rose captures the ethereal beauty of a flower blooming in the heart of the desert. With top notes of saffron and heart notes of damask rose, it settles into a warm base of vanilla and white musk, perfect for the modern woman.",
-    ingredients: "Alcohol Denat., Fragrance (Parfum), Saffron Extract, Rose absolute, Vanilla Planifolia, White Musk.",
+    name: "Rose Water Toner",
+    shortDescription: "Pure distilled rose water for a fresh complexion.",
+    longDescription: "Our Rose Water is distilled from the famous roses of Kelaat M'Gouna. This natural toner balances the skin's pH, tightens pores, and provides a refreshing burst of hydration. Perfect for sensitive skin and as a midday pick-me-up.",
     mainImage: PRODUCT_IMAGE,
     thumbnailImages: [PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE],
-    category: "women",
+    category: "Natural Cosmetics",
     price: 95,
-    oldPrice: 120,
     stock: 45,
-    isBest: false,
+    isPopular: false,
+    city: "Kelaat M'Gouna",
   },
   {
     id: "prod-11",
-    name: "Midnight Musk",
-    brand: "Alhor Elite",
-    volume: "100ml",
-    longDescription:
-      "Midnight Musk is a bold statement of masculinity and intrigue. It opens with sharp citrus and moves into a complex heart of leather and black pepper, finishing with a long-lasting, heavy musk that lingers long after the sun goes down.",
-    ingredients: "Alcohol Denat., Fragrance (Parfum), Musk Ketone, Leather Accord, Tobacco Absolute, Black Pepper Oil.",
+    name: "Ginger Capsules",
+    shortDescription: "Pure dried ginger root in convenient capsule form.",
+    longDescription: "Natural digestive support in a convenient daily supplement. Our Ginger Capsules contain high-quality, finely ground ginger root, known for its ability to soothe nausea and support healthy digestion and anti-inflammatory response.",
     mainImage: PRODUCT_IMAGE,
     thumbnailImages: [PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE],
-    category: "men",
+    category: "Herbal Tinctures & Capsules",
     price: 130,
-    oldPrice: 160,
     stock: 20,
-    isBest: false,
+    isPopular: false,
+    city: "Casablanca",
   },
   {
     id: "prod-12",
-    name: "Atlas Cedar",
-    brand: "Alhor Elite",
-    volume: "100ml",
-    longDescription:
-      "Inspired by the crisp air and ancient forests of Morocco's High Atlas Mountains, Atlas Cedar combines refreshing bergamot with the noble strength of cedarwood and patchouli. A clean, invigorating scent for the adventurous soul.",
-    ingredients: "Alcohol Denat., Cedrus Atlantica Wood Oil, Bergamot Oil, Patchouli, Vetiver, Lavender.",
+    name: "Ras El Hanout Blend",
+    shortDescription: "Masterful blend of our finest Moroccan spices.",
+    longDescription: "A legendary Moroccan spice blend, meaning 'head of the shop'. Our custom Ras El Hanout combines over a dozen premium spices, including cinnamon, cardamom, and clove, to create a complex and aromatic profile perfect for slow-cooked stews.",
     mainImage: PRODUCT_IMAGE,
     thumbnailImages: [PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE, PRODUCT_IMAGE],
-    category: "men",
+    category: "Spices",
     price: 85,
-    oldPrice: 110,
     stock: 50,
-    isBest: false,
+    isPopular: false,
+    city: "Fes",
   },
 ]
 
@@ -218,4 +186,4 @@ export function getProductById(id: string): Product | undefined {
   return products.find((product) => product.id === id)
 }
 
-export const bestSellers: Product[] = products.filter(p => p.isBest).slice(0, 8);
+export const bestSellers: Product[] = products.filter(p => p.isPopular).slice(0, 8);

@@ -17,14 +17,14 @@ function ProductsContent() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const searchParam = searchParams.get('q')
-  const conditionParam = searchParams.get('condition')
+  const categoryParam = searchParams.get('category')
   const minParam = searchParams.get('min')
   const maxParam = searchParams.get('max')
   
   const [allProducts, setAllProducts] = useState<Product[]>([])
   const [filters, setFilters] = useState<Filters>({
     search: searchParam ?? "",
-    condition: conditionParam ?? "all",
+    category: categoryParam ?? "all",
     minPrice: minParam ? Number(minParam) : null,
     maxPrice: maxParam ? Number(maxParam) : null,
   })
@@ -49,8 +49,8 @@ function ProductsContent() {
       if (filters.maxPrice != null && p.price > filters.maxPrice) return false
 
       // Category filtering
-      if (filters.condition && filters.condition !== "all") {
-        if (p.category !== filters.condition) return false
+      if (filters.category && filters.category !== "all") {
+        if (p.category !== filters.category) return false
       }
 
       // Search filtering
@@ -68,11 +68,11 @@ function ProductsContent() {
     setFilters(prev => ({ 
       ...prev, 
       search: searchParam ?? "", 
-      condition: conditionParam ?? "all" ,
+      category: categoryParam ?? "all" ,
       minPrice: minParam ? Number(minParam) : null,
       maxPrice: maxParam ? Number(maxParam) : null,
     }))
-  }, [searchParam, conditionParam, minParam, maxParam])
+  }, [searchParam, categoryParam, minParam, maxParam])
 
   const handleFilterChange = (newFilters: Filters) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -80,8 +80,8 @@ function ProductsContent() {
     if (newFilters.search) params.set('q', newFilters.search)
     else params.delete('q')
 
-    if (newFilters.condition && newFilters.condition !== "all") params.set('condition', newFilters.condition)
-    else params.delete('condition')
+    if (newFilters.category && newFilters.category !== "all") params.set('category', newFilters.category)
+    else params.delete('category')
 
     if (newFilters.minPrice != null) params.set('min', newFilters.minPrice.toString())
     else params.delete('min')
@@ -120,7 +120,7 @@ function ProductsContent() {
                 onChange={handleFilterChange} 
                 initial={{ 
                   search: searchParam ?? "",
-                  condition: conditionParam ?? "all",
+                  category: categoryParam ?? "all",
                   minPrice: minParam ? Number(minParam) : null,
                   maxPrice: maxParam ? Number(maxParam) : null
                 }} 

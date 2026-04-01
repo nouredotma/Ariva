@@ -3,7 +3,7 @@
 import { memo } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Package } from "lucide-react"
+import { Package, Heart } from "lucide-react"
 import type { Product } from "@/lib/products-data"
 import { motion } from "framer-motion"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -23,11 +23,7 @@ const ProductsGrid = memo(function ProductsGrid({ products, isLoading }: Product
             <div className="flex flex-col grow gap-2 p-1 md:py-1 md:px-2">
               <Skeleton className="w-16 h-3 md:h-4" />
               <Skeleton className="w-3/4 h-4 md:h-6" />
-              <div className="flex items-center justify-between mt-auto pt-2">
-                <Skeleton className="w-12 h-3 md:h-4" />
-                <Skeleton className="w-16 h-4 md:h-5" />
-              </div>
-              <Skeleton className="w-full h-8 md:h-10 rounded-full mt-2" />
+              <Skeleton className="w-full h-8 md:h-10 rounded-full mt-auto" />
             </div>
           </div>
         ))}
@@ -57,55 +53,49 @@ const ProductsGrid = memo(function ProductsGrid({ products, isLoading }: Product
           >
             <Link
               href={`/products/${product.id}`}
-              className="group relative transition-all duration-300 h-full flex flex-col"
-              style={{ backgroundColor: 'var(--neutral-50)' }}
+              className="group relative transition-all duration-300 h-full flex flex-col hover:bg-[#fbfbe2] rounded-xs md:rounded-md overflow-hidden"
+              style={{ backgroundColor: '#fbfbe5' }}
             >
               {/* Image Section */}
-              <div className="relative aspect-square overflow-hidden bg-slate-50 rounded-xs md:rounded-md rounded-b-none md:rounded-b-none">
-                <Image
-                  src={product.mainImage || "/placeholder.svg"}
-                  alt={product.name}
-                  fill
-                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  priority={index < 4}
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute top-0 right-0 bg-green-500 text-white px-2 py-0.5 md:py-1 rounded-none  rounded-bl-md  text-[10px] md:text-xs font-bold z-10 shadow-sm">
-                  Stock: {product.stock}
+              <div className="relative aspect-square overflow-hidden rounded-xs md:rounded-md rounded-b-none md:rounded-b-none p-4 md:p-6 group/imgContainer">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={product.mainImage || "/placeholder.svg"}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    priority={index < 4}
+                    className="object-contain"
+                  />
                 </div>
+                
+                {/* Heart Button */}
+                <button 
+                  className="absolute top-4 right-4 p-1 rounded-full transition-all duration-300 z-10 active:scale-95 group/heart"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // Favorite logic would go here
+                  }}
+                >
+                  <Heart size={21} className="fill-current text-[#f3bcbc] hover:text-[#f3bcbc] active:text-[#df2727] focus:text-[#df2727] transition-colors duration-300" />
+                </button>
               </div>
 
-              {/* Content Section */}
+                {/* Content Section */}
               <div className="py-2 md:py-3 flex flex-col grow">
-                {/* Brand Before Name */}
-                <p className="text-[10px] md:text-sm font-bold mb-0.5" style={{ color: 'var(--neutral-500)' }}>
-                  {product.brand}
-                </p>
                 <div className="flex mb-1">
                   <h3 className="text-sm md:text-lg font-semibold group-hover:text-primary transition-colors line-clamp-1 w-full font-fauna" style={{ color: 'var(--neutral-900)' }}>
                     {product.name}
                   </h3>
                 </div>
 
-                {/* Short description removed as per user request */}
+                <p className="text-[10px] md:text-xs text-neutral-500 line-clamp-2 mb-2 min-h-[2.5em]">
+                  {product.shortDescription}
+                </p>
 
-                {/* Prices Row: Old on left, New on right */}
-                <div className="mt-0 flex items-center justify-between mb-2">
-                  <div className="flex items-baseline gap-2">
-                    {product.oldPrice && (
-                      <span className="text-[10px] md:text-sm text-neutral-400 line-through font-light leading-none">
-                        {product.oldPrice} MAD
-                      </span>
-                    )}
-                  </div>
-                  <span className="text-sm md:text-lg font-bold leading-none font-fauna" style={{ color: 'var(--neutral-900)' }}>
-                    {product.price} MAD
-                  </span>
-                </div>
 
-                {/* Content-width Rounded Button Under Prices */}
-                
-                <div className="w-fit bg-primary text-primary-foreground group-hover:bg-primary-600 transition-all px-3 md:px-4 py-2 md:py-2.5 rounded-full text-[11px] md:text-sm font-fauna">
+
+                <div className="self-end bg-primary text-primary-foreground group-hover:bg-primary-600 transition-all px-3 md:px-4 py-2 md:py-2.5 rounded-full text-[11px] md:text-sm font-fauna">
                   View Details
                 </div>
               </div>
