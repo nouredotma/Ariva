@@ -21,40 +21,36 @@ const dancingScript = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://alhorparfum.com"),
+  metadataBase: new URL("https://ariva.com"),
   title: {
-    default: "Alhor Parfum — Finest Oriental Scents in Casablanca, Morocco",
-    template: "%s | Alhor Parfum",
+    default: "Ariva — Organic Products in Morocco",
+    template: "%s | Ariva",
   },
   description:
-    "Alhor Parfum — Specializing in the finest oriental products, oud, and luxury fragrances in Casablanca, Morocco. We stand out for our high quality and elegant scents.",
+    "Ariva — Discover fresh, 100% Certified Organic goods curated directly from local cooperatives nestled in the Atlas Mountains and Souss Valley in Morocco.",
   keywords: [
-    "Alhor Parfum",
-    "oriental products Casablanca",
-    "oriental scents Morocco",
-    "oud Casablanca",
-    "luxury products Morocco",
-    "Alhor fragrances",
-    "product store Morocco",
-    "luxury oud",
-    "incense Casablanca",
-    "oriental fragrance shop",
+    "Ariva",
+    "organic products Morocco",
+    "certified organic",
+    "Atlas Mountains",
+    "Souss Valley",
+    "natural goods"
   ],
   authors: [
     {
-      name: "Alhor Parfum",
-      url: "https://alhorparfum.com",
+      name: "Ariva",
+      url: "https://ariva.com",
     },
   ],
-  creator: "Alhor Parfum",
-  publisher: "Alhor Parfum",
+  creator: "Ariva",
+  publisher: "Ariva",
   formatDetection: {
     email: true,
     address: true,
     telephone: true,
   },
-  category: "product Store",
-  classification: "Oriental products & Fragrances Store",
+  category: "Organic Store",
+  classification: "Organic Products Store",
   icons: {
     icon: [
       { url: "/favicon.png", sizes: "32x32", type: "image/png" },
@@ -65,24 +61,24 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Alhor Parfum — Finest Oriental Scents",
+    title: "Ariva — Organic Products in Morocco",
     description:
-      "Alhor Parfum specializes in the finest oriental products, oud, and luxury fragrances in Casablanca, Morocco.",
-    url: "https://alhorparfum.com",
-    siteName: "Alhor Parfum",
+      "Ariva — Discover fresh, 100% Certified Organic goods curated directly from local cooperatives nestled in the Atlas Mountains and Souss Valley in Morocco.",
+    url: "https://ariva.com",
+    siteName: "Ariva",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Alhor Parfum — Finest Oriental Scents",
+        alt: "Ariva — Organic Products in Morocco",
         type: "image/jpeg",
       },
       {
         url: "/favicon.png",
         width: 512,
         height: 512,
-        alt: "Alhor Parfum Logo",
+        alt: "Ariva Logo",
       },
     ],
     locale: "en_US",
@@ -91,17 +87,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alhor Parfum — Finest Oriental Scents",
+    title: "Ariva — Organic Products in Morocco",
     description:
-      "The finest oriental products and oud in Casablanca, Morocco.",
+      "Discover fresh, 100% Certified Organic goods in Morocco.",
     images: ["/og-image.jpg"],
-    creator: "@alhorparfum",
-    site: "@alhorparfum",
+    creator: "@ariva",
+    site: "@ariva",
   },
   alternates: {
-    canonical: "https://alhorparfum.com",
+    canonical: "https://ariva.com",
     languages: {
-      "en-US": "https://alhorparfum.com",
+      "en-US": "https://ariva.com",
     },
   },
   robots: {
@@ -120,10 +116,10 @@ export const metadata: Metadata = {
     google: "your-google-verification-code",
   },
   other: {
-    "geo.region": "MA-CAS",
-    "geo.placename": "Casablanca",
-    "geo.position": "33.5731;-7.5898",
-    ICBM: "33.5731, -7.5898",
+    "geo.region": "MA-AGD",
+    "geo.placename": "Agadir",
+    "geo.position": "30.4278;-9.5981",
+    ICBM: "30.4278, -9.5981",
   },
 };
 
@@ -133,33 +129,33 @@ const jsonLd = {
   "@graph": [
     {
       "@type": ["Organization", "Store"],
-      "@id": "https://alhorparfum.com/#organization",
-      name: "Alhor Parfum",
-      url: "https://alhorparfum.com",
+      "@id": "https://ariva.com/#organization",
+      name: "Ariva",
+      url: "https://ariva.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://alhorparfum.com/favicon.png",
+        url: "https://ariva.com/favicon.png",
         width: 512,
         height: 512,
       },
-      image: "https://alhorparfum.com/og-image.jpg",
+      image: "https://ariva.com/og-image.jpg",
       description:
-        "Alhor Parfum specializes in the finest oriental products, oud, and luxury fragrances in Casablanca, Morocco.",
+        "Ariva — Discover fresh, 100% Certified Organic goods curated directly from local cooperatives nestled in the Atlas Mountains and Souss Valley in Morocco.",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "22 Rue 8",
-        addressLocality: "Casablanca",
-        addressRegion: "Casablanca-Settat",
-        postalCode: "20220",
+        streetAddress: "Avenue Hassan II",
+        addressLocality: "Agadir",
+        addressRegion: "Souss-Massa",
+        postalCode: "80000",
         addressCountry: "MA",
       },
       geo: {
         "@type": "GeoCoordinates",
-        latitude: 33.5731,
-        longitude: -7.5898,
+        latitude: 30.4278,
+        longitude: -9.5981,
       },
-      telephone: "+212669034206",
-      email: "alhorparfum@gmail.com",
+      telephone: "+212600000000",
+      email: "hello@ariva.com",
       priceRange: "$$",
       openingHoursSpecification: [
         {
@@ -170,17 +166,16 @@ const jsonLd = {
             "Wednesday",
             "Thursday",
             "Friday",
-            "Saturday",
-            "Sunday",
+            "Saturday"
           ],
-          opens: "10:00",
-          closes: "22:00",
+          opens: "09:00",
+          closes: "18:00",
         },
       ],
       sameAs: [
-        "https://www.facebook.com/Mohamedaminefakih/",
-        "https://www.instagram.com/alhor_oud_parfums_orientales/",
-        "https://www.tiktok.com/@matjar.elhor/",
+        "https://www.facebook.com/ariva",
+        "https://www.instagram.com/ariva_organic",
+        "https://www.tiktok.com/@ariva"
       ],
       areaServed: {
         "@type": "Country",
@@ -190,18 +185,18 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://alhorparfum.com/#website",
-      url: "https://alhorparfum.com",
-      name: "Alhor Parfum",
-      description: "The finest oriental products and luxury fragrances in Morocco",
+      "@id": "https://ariva.com/#website",
+      url: "https://ariva.com",
+      name: "Ariva",
+      description: "Discover fresh, 100% Certified Organic goods in Morocco.",
       publisher: {
-        "@id": "https://alhorparfum.com/#organization",
+        "@id": "https://ariva.com/#organization",
       },
       potentialAction: {
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
-          urlTemplate: "https://alhorparfum.com/search?q={search_term_string}",
+          urlTemplate: "https://ariva.com/search?q={search_term_string}",
         },
         "query-input": "required name=search_term_string",
       },
@@ -209,13 +204,13 @@ const jsonLd = {
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://alhorparfum.com/#breadcrumb",
+      "@id": "https://ariva.com/#breadcrumb",
       itemListElement: [
         {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://alhorparfum.com",
+          item: "https://ariva.com",
         },
       ],
     },
@@ -238,14 +233,14 @@ export default function RootLayout({
         />
 
         {/* Theme color for mobile browsers */}
-        <meta name="theme-color" content="#FFCC00" />
-        <meta name="msapplication-TileColor" content="#FFCC00" />
+        <meta name="theme-color" content="#4f7942" />
+        <meta name="msapplication-TileColor" content="#4f7942" />
 
         {/* Additional SEO meta tags */}
-        <meta name="application-name" content="Alhor Parfum" />
+        <meta name="application-name" content="Ariva" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Alhor Parfum" />
+        <meta name="apple-mobile-web-app-title" content="Ariva" />
         <meta name="mobile-web-app-capable" content="yes" />
 
         {/* JSON-LD Structured Data */}

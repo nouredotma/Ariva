@@ -11,42 +11,42 @@ const testimonials = [
   {
     name: "Amina Berrada",
     location: "Marrakech, Morocco",
-    text: "Alhor Oud has become my favorite destination for oud and oriental products. The scents are authentic, incredibly long-lasting, and project beautifully all day long. Highly recommended!",
+    text: "Ariva has become my favorite destination for organic products. The products are authentic, incredibly fresh, and curated beautifully. Highly recommended!",
     rating: 5,
     image: "https://images.unsplash.com/photo-1610899708179-34d193e952e6?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Realistic Moroccan woman (download & save as amina.jpg)
   },
   {
     name: "Youssef Chafik",
     location: "Casablanca, Morocco",
-    text: "The oud at Alhor is genuine and extremely luxurious. I tried Cruise by Riiffs and it was outstanding. Exceptional quality at a great price. I strongly recommend them to anyone looking for powerful oriental fragrances.",
+    text: "The goods at Ariva are genuine and extremely high quality. I tried their pure argan oil and it was outstanding. Exceptional quality at a great price. I strongly recommend them.",
     rating: 5,
     image: "https://images.unsplash.com/photo-1598404331409-d8d1d3b50c6d?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Realistic Moroccan man in casual style (download & save as youssef.jpg)
   },
   {
     name: "Soukaina Alaoui",
     location: "Rabat, Morocco",
-    text: "A truly unique olfactory experience. Their oriental products and luxury dupes (like Nusuk and Riiffs) are fantastic. Every bottle feels premium and tells a story of elegance. Perfect for prestigious gifts.",
+    text: "A truly unique experience. Their natural organic products are fantastic. Every jar and bottle feels premium and tells a story of elegance. Perfect for prestigious gifts.",
     rating: 5,
     image: "https://images.unsplash.com/photo-1638018034139-51d5a30d939c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Professional Moroccan woman (download & save as soukaina.jpg)
   },
   {
     name: "Rachid Hammoudi",
     location: "Tanger, Morocco",
-    text: "Fast service and luxurious packaging. Delivery to all cities is reliable. Alhor Oud is without doubt the best choice for oriental products and high-quality oud in Morocco. Thank you!",
+    text: "Fast service and beautiful packaging. Delivery to all cities is reliable. Ariva is without doubt the best choice for natural organic products in Morocco. Thank you!",
     rating: 5,
     image: "https://images.unsplash.com/photo-1714859665868-8a3b9c02b1c6?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Casual Moroccan man (download & save as rachid.jpg)
   },
   {
     name: "Nadia Kabbaj",
     location: "FÃ¨s, Morocco",
-    text: "Clear professionalism and passion in every fragrance. I tried Mahab by Nusuk (a great Guidance dupe) and it was amazing. The scents start with pure luxury and the fragrance stays strong. An essential address.",
+    text: "Clear professionalism and passion in every item. I tried their local saffron and it was amazing. The products start with pure luxury and remain excellent over time. An essential address.",
     rating: 5,
     image: "https://images.unsplash.com/photo-1594048387363-c8108f018eb5?q=80&w=728&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Moroccan woman with hijab style (download & save as nadia.jpg)
   },
   {
     name: "Omar Tazi",
     location: "Agadir, Morocco",
-    text: "The team is very welcoming and gives excellent advice based on your taste. Their oud and oriental products are simply divine. The longevity and projection are impressive — you'll want to buy more than one. Visit the store if you can!",
+    text: "The team is very welcoming and gives excellent advice based on your taste. Their organic products are simply divine. The quality is impressive — you'll want to buy more than one. Visit the store if you can!",
     rating: 5,
     image: "https://images.unsplash.com/photo-1755795692499-1b150497daac?q=80&w=685&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },

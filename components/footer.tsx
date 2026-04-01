@@ -106,7 +106,7 @@ export default function Footer() {
             </div>
             {/* Desktop Copyright notice */}
             <div className="hidden lg:block mt-auto text-xs font-light text-[#fbfbe5]/70 text-right pt-8">
-              © 2026 Alhor Parfum. All rights reserved.
+              © 2026 Ariva. All rights reserved.
             </div>
           </div>
           
@@ -165,7 +165,7 @@ export default function Footer() {
         {/* Mobile Footer Bottom Row: Centered Copyright */}
         <div className="mt-8 pt-6 border-t border-[#fbfbe5]/20 flex flex-col items-center lg:hidden">
           <div className="text-xs font-light text-[#fbfbe5]/70">
-            © 2026 Alhor Parfum. All rights reserved.
+            © 2026 Ariva. All rights reserved.
           </div>
         </div>
       </div>

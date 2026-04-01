@@ -49,7 +49,7 @@ export default function SplashScreen() {
     >
       <Image
         src="/logo.png"
-        alt="Alhor Parfum"
+        alt="Ariva"
         width={180}
         height={180}
         priority

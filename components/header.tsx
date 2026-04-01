@@ -74,7 +74,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
           <div className="md:hidden flex h-16 items-center justify-between">
             {/* Left: Logo */}
             <Link href="/" className="flex items-center z-10">
-              <Image src="/logo.png" alt="Alhor Parfum Logo" width={128} height={56} className="h-12 w-auto object-contain" priority sizes="(max-width: 768px) 112px, 128px" />
+              <Image src="/logo.png" alt="Ariva Logo" width={128} height={56} className="h-12 w-auto object-contain" priority sizes="(max-width: 768px) 112px, 128px" />
             </Link>
 
             {/* Right: Menu Button */}
@@ -113,7 +113,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
               {/* Left: Logo */}
               <div className="flex items-center gap-6 shrink-0">
                 <Link href="/" className="flex items-center">
-                  <Image src="/logo.png" alt="Alhor Parfum Logo" width={160} height={56} className="h-12 w-auto object-contain" priority sizes="(max-width: 768px) 96px, 128px" />
+                  <Image src="/logo.png" alt="Ariva Logo" width={160} height={56} className="h-12 w-auto object-contain" priority sizes="(max-width: 768px) 96px, 128px" />
                 </Link>
               </div>
 
@@ -221,7 +221,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
                   {/* Header with close button */}
                   <div className="flex items-center justify-between px-3 py-4" style={{ backgroundColor: '#fbfbe5' }}>
                     <Link href="/" className="inline-block" onClick={() => setIsMenuOpen(false)}>
-                      <Image src="/logo.png" alt="Alhor Parfum Logo" width={128} height={40} className="h-10 w-auto object-contain" priority sizes="(max-width: 768px) 96px, 128px" />
+                      <Image src="/logo.png" alt="Ariva Logo" width={128} height={40} className="h-10 w-auto object-contain" priority sizes="(max-width: 768px) 96px, 128px" />
                     </Link>
                     <button
                       onClick={() => setIsMenuOpen(false)}
