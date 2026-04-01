@@ -130,11 +130,10 @@ export default function Testimonials() {
                     
                     {/* Main Card */}
                     <div 
-                      className="relative rounded-xl transition-all duration-500 p-8 h-full flex flex-col border border-primary/5 bg-[#fbfbe5] group-hover:-translate-x-1 group-hover:-translate-y-1" 
+                      className="relative rounded-xl transition-all duration-500 p-4 md:p-6 h-full flex flex-col border border-primary/5 bg-[#fbfbe5] group-hover:-translate-x-1 group-hover:-translate-y-1" 
                     >
                       <div className="flex justify-between items-start mb-6">
                         <div className="space-y-4">
-                          <Quote className="w-8 h-8 text-primary/20 rotate-180" />
                           <div className="grow">
                             <p className="text-sm md:text-[15px] leading-relaxed font-normal text-primary line-clamp-4 font-fauna">
                               "{testimonial.text}"

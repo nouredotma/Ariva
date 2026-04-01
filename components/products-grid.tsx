@@ -55,7 +55,7 @@ const ProductsGrid = memo(function ProductsGrid({ products, isLoading, variant =
           >
             {variant === 'horizontal' && index > 0 && (
               <div className="w-full px-4 md:hidden py-1">
-                <div className="h-[5px] w-full bg-primary rounded-full opacity-50" />
+                <div className="h-[3px] w-full bg-primary rounded-full opacity-50" />
               </div>
             )}
             

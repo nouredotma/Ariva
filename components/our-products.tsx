@@ -40,7 +40,7 @@ const CategoryBridgeShape = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export default function OurProducts() {
+export default function OurProducts({ isWhite = false }: { isWhite?: boolean }) {
   const [cats, setCats] = useState<Category[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -56,16 +56,21 @@ export default function OurProducts() {
     fetchCategories()
   }, [])
 
+  const bgColor = isWhite ? "bg-white" : "bg-[#fbfbe5]";
+  const accentColor = isWhite ? "text-white" : "text-[#fbfbe5]";
+  const accentBg = isWhite ? "bg-white" : "bg-[#fbfbe5]";
+  const accentBorder = isWhite ? "border-white" : "border-[#fbfbe5]";
+
   return (
-    <section className="relative w-full bg-[#fbfbe5] py-6 mt-24 md:mt-40 mb-24 md:mb-40 overflow-visible">
+    <section className={`relative w-full ${bgColor} py-6 mt-24 md:mt-40 mb-24 md:mb-40 overflow-visible`}>
       {/* Absolute Top Shape - positioned relative to section top */}
-      <OurProductsTopShape className="absolute bottom-[99.5%] left-0 w-full h-[100px] md:h-[180px] text-[#fbfbe5]" />
+      <OurProductsTopShape className={`absolute bottom-[99.5%] left-0 w-full h-[100px] md:h-[180px] ${accentColor}`} />
       
       {/* Absolute Bottom Shape - positioned relative to section bottom */}
-      <OurProductsBottomShape className="absolute top-[99.5%] left-0 w-full h-[100px] md:h-[180px] text-[#fbfbe5]" />
+      <OurProductsBottomShape className={`absolute top-[99.5%] left-0 w-full h-[100px] md:h-[180px] ${accentColor}`} />
 
       <div className="max-w-full mx-auto px-2 md:px-12 relative z-10">
-        <div className="w-full flex items-end justify-between mb-8 text-[#fbfbe5] gap-0">
+        <div className={`w-full flex items-end justify-between mb-8 ${accentColor} gap-0`}>
           
           {/* Left Title - Full Rounded */}
           <div className="bg-primary h-10 md:h-14 rounded-full px-5 md:px-8 flex items-center justify-center shrink-0 relative z-10">
@@ -81,8 +86,8 @@ export default function OurProducts() {
 
           {/* Right Link - Full Rounded with reduced padding */}
           <Link href="/products" className="bg-primary h-10 md:h-14 rounded-full px-4 md:px-6 flex items-center justify-center gap-2 group shrink-0 relative z-10">
-            <span className="text-xs md:text-base font-medium border-b border-[#fbfbe5] pb-0.5 font-fauna whitespace-nowrap">View all</span>
-            <div className="bg-[#fbfbe5] rounded-full p-0.5 md:p-1 text-primary">
+            <span className={`text-xs md:text-base font-medium border-b ${accentBorder} pb-0.5 font-fauna whitespace-nowrap`}>View all</span>
+            <div className={`${accentBg} rounded-full p-0.5 md:p-1 text-primary`}>
               <ArrowRight className="w-3 h-3 md:w-4 md:h-4 stroke-3" />
             </div>
           </Link>
@@ -102,7 +107,7 @@ export default function OurProducts() {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0 md:gap-3">
               {cats.length === 0 ? (
                 <div className="col-span-full flex flex-col items-center justify-center py-24 text-center">
                   <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-6">
@@ -123,7 +128,7 @@ export default function OurProducts() {
                   >
                     <Link
                       href={`/collections/${cat.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
-                      className="group relative transition-all duration-300 h-full flex flex-col bg-[#fbfbe5] hover:bg-[#c1d1be] rounded-xs md:rounded-md overflow-hidden"
+                      className={`group relative transition-all duration-300 h-full flex flex-col ${accentBg} hover:bg-[#c1d1be] rounded-xs md:rounded-md overflow-hidden`}
                     >
                       {/* Image Section */}
                       <div className="relative aspect-3/4 overflow-hidden rounded-xs md:rounded-md rounded-b-none md:rounded-b-none p-2 md:p-4 pb-0 md:pb-0 group/imgContainer">
@@ -140,7 +145,7 @@ export default function OurProducts() {
 
                         {/* Heart Button */}
                         <button 
-                          className="absolute top-6 right-6 p-1 rounded-full transition-all duration-300 z-10 active:scale-95 group/heart cursor-pointer"
+                          className="absolute top-3 right-3 md:top-6 md:right-6 p-1 rounded-full transition-all duration-300 z-10 active:scale-95 group/heart cursor-pointer"
                           onClick={(e) => {
                             e.preventDefault();
                             // Favorite logic would go here
@@ -162,10 +167,10 @@ export default function OurProducts() {
                           </p>
 
                           <div className="flex items-center gap-2 md:gap-3 bg-primary p-1 pr-1 pl-3 md:pl-4 rounded-full group/btn hover:bg-[#9ac58e] transition-all shadow-sm shrink-0 mb-1">
-                            <span className="text-[11px] md:text-[13px] font-bold font-fauna text-[#fbfbe5] tracking-widest leading-none">
+                            <span className={`text-[11px] md:text-[13px] font-bold font-fauna ${accentColor} tracking-widest leading-none`}>
                               View
                             </span>
-                            <div className="bg-[#fbfbe5] w-7 h-7 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-transform duration-300">
+                            <div className={`${accentBg} w-7 h-7 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-transform duration-300`}>
                               <ArrowRight size={16} className="text-primary" />
                             </div>
                           </div>

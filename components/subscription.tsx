@@ -33,11 +33,11 @@ export default function Subscription() {
                 {/* Text Content */}
                 <div className="w-2/3 space-y-2 text-left md:max-w-xl">
                   <div className="space-y-1">
-                    <h2 className="text-xl md:text-5xl font-bold font-fauna text-white leading-tight tracking-tight max-w-2xl">
+                    <h2 className="text-xl md:text-5xl font-bold font-fauna text-[#fbfbe5] leading-tight tracking-tight max-w-2xl">
                       Join the organic movement
                     </h2>
                   </div>
-                  <p className="text-white/80 text-xs md:text-lg font-light leading-relaxed max-w-xl font-fauna">
+                  <p className="text-[#fbfbe5]/80 text-xs md:text-lg font-light leading-relaxed max-w-xl font-fauna">
                     Subscribe to receive seasonal harvest updates, exclusive recipes from Moroccan chefs, and first access to limited edition organic yields.
                   </p>
                 </div>
@@ -52,12 +52,12 @@ export default function Subscription() {
                       <input
                         type="email"
                         placeholder="Email address"
-                        className="flex-1 bg-transparent border-none focus:ring-0 px-4 md:px-6 py-2.5 md:py-3 text-white placeholder-white/50 text-xs md:text-base rounded-full outline-hidden min-w-0"
+                        className="flex-1 bg-transparent border-none focus:ring-0 px-4 md:px-6 py-2.5 md:py-3 text-[#fbfbe5] placeholder-[#fbfbe5]/50 text-xs md:text-base rounded-full outline-hidden min-w-0"
                         required
                       />
                       <button
                         type="submit"
-                        className="whitespace-nowrap bg-white text-primary px-4 md:px-8 py-2.5 md:py-3 rounded-full font-bold text-xs md:text-base hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2 group cursor-pointer"
+                        className="whitespace-nowrap bg-[#fbfbe5] text-primary px-4 md:px-8 py-2.5 md:py-3 rounded-full font-bold text-xs md:text-base hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2 group cursor-pointer"
                       >
                         Join Us
                         <div className="hidden xs:flex w-4 h-4 md:w-5 md:h-5 rounded-full bg-primary/10 items-center justify-center transition-colors group-hover:bg-primary/20">
@@ -65,8 +65,8 @@ export default function Subscription() {
                         </div>
                       </button>
                     </form>
-                    <p className="mt-4 text-[11px] md:text-sm text-white/50 text-left px-2 font-light">
-                      We value your privacy. Join over <span className="text-white/80 font-medium">10,000+</span> organic enthusiasts.
+                    <p className="mt-4 text-[11px] md:text-sm text-[#fbfbe5]/50 text-left px-2 font-light">
+                      We value your privacy. Join over <span className="text-[#fbfbe5]/80 font-medium">10,000+</span> organic enthusiasts.
                     </p>
                   </div>
                 </div>

@@ -3,7 +3,7 @@
 import { useCart } from "@/components/cart-provider"
 import { Button } from "@/components/ui/button"
 import { AnimatePresence, motion } from "framer-motion"
-import { ArrowLeft, Minus, Plus, ShoppingCart, Trash2, X, Package, CheckCircle2 } from "lucide-react"
+import { ArrowLeft, ArrowRight, Minus, Plus, ShoppingCart, Trash2, X, Package, CheckCircle2 } from "lucide-react"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 
@@ -94,7 +94,7 @@ Total: ${totalPrice} MAD
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: 10 }}
             transition={{ type: "spring", damping: 30, stiffness: 400 }}
-            className="fixed left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[calc(100%-2rem)] md:w-full md:max-w-lg h-auto max-h-[70vh] bg-white rounded-sm z-101 flex flex-col overflow-hidden border border-gray-100"
+            className="fixed left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[calc(100%-2rem)] md:w-full md:max-w-lg h-auto max-h-[85vh] bg-white rounded-lg md:rounded-xl z-101 flex flex-col overflow-hidden border border-gray-100 shadow-2xl"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-white grow-0 shrink-0">
@@ -164,16 +164,16 @@ Total: ${totalPrice} MAD
                           <motion.div
                             key={item.productId}
                             layout
-                            className="flex gap-2.5 p-2 rounded-sm bg-gray-50 border border-gray-100"
+                            className="flex gap-2.5 p-2 rounded-lg bg-[#fbfbe5]/50 border border-gray-100"
                           >
-                            <div className="relative w-12 h-12 rounded-sm overflow-hidden shrink-0 bg-white border border-gray-200">
+                            <div className="relative w-12 h-12 rounded-sm md:rounded-lg overflow-hidden shrink-0 bg-white border border-gray-200">
                               <Image src={item.image} alt={item.name} fill className="object-cover" sizes="48px" />
                             </div>
                             <div className="flex-1 min-w-0">
                               <h4 className="text-xs md:text-sm font-semibold text-gray-900 truncate">{item.name}</h4>
                               <p className="text-[11px] md:text-xs font-bold text-primary mt-0.5">{item.price} MAD</p>
                               <div className="flex items-center gap-2 mt-1.5">
-                                <div className="flex items-center border border-gray-200 rounded-sm overflow-hidden bg-white">
+                                <div className="flex items-center border border-gray-200 rounded-smg overflow-hidden bg-white">
                                   <button
                                     onClick={() => updateQuantity(item.productId, item.quantity - 1)}
                                     className="w-6 h-6 md:w-7 md:h-7 flex items-center justify-center text-gray-400 hover:text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer"
@@ -224,7 +224,7 @@ Total: ${totalPrice} MAD
                           type="text"
                           value={formData.name}
                           onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                          className="w-full h-9 md:h-11 px-3 rounded-sm border border-gray-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 focus:border-primary transition-colors pointer-events-auto"
+                          className="w-full h-9 md:h-11 px-4 rounded-lg md:rounded-xl border border-gray-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 focus:border-primary transition-colors pointer-events-auto"
                           placeholder="Enter your full name"
                         />
                       </div>
@@ -237,7 +237,7 @@ Total: ${totalPrice} MAD
                             type="email"
                             value={formData.email}
                             onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                            className="w-full h-9 md:h-11 px-3 rounded-sm border border-gray-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 focus:border-primary transition-colors pointer-events-auto"
+                            className="w-full h-9 md:h-11 px-4 rounded-lg md:rounded-xl border border-gray-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 focus:border-primary transition-colors pointer-events-auto"
                             placeholder="Enter your email"
                           />
                         </div>
@@ -249,7 +249,7 @@ Total: ${totalPrice} MAD
                             type="tel"
                             value={formData.phone}
                             onChange={e => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                            className="w-full h-9 md:h-11 px-3 rounded-sm border border-gray-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 focus:border-primary transition-colors pointer-events-auto"
+                            className="w-full h-9 md:h-11 px-4 rounded-lg md:rounded-xl border border-gray-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 focus:border-primary transition-colors pointer-events-auto"
                             placeholder="Enter your phone number"
                           />
                         </div>
@@ -263,7 +263,7 @@ Total: ${totalPrice} MAD
                             type="text"
                             value={formData.address}
                             onChange={e => setFormData(prev => ({ ...prev, address: e.target.value }))}
-                            className="w-full h-9 md:h-11 px-3 rounded-sm border border-gray-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 focus:border-primary transition-colors pointer-events-auto"
+                            className="w-full h-9 md:h-11 px-4 rounded-lg md:rounded-xl border border-gray-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 focus:border-primary transition-colors pointer-events-auto"
                             placeholder="Enter your shipping address"
                           />
                         </div>
@@ -275,7 +275,7 @@ Total: ${totalPrice} MAD
                             type="text"
                             value={formData.city}
                             onChange={e => setFormData(prev => ({ ...prev, city: e.target.value }))}
-                            className="w-full h-9 md:h-11 px-3 rounded-sm border border-gray-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 focus:border-primary transition-colors pointer-events-auto"
+                            className="w-full h-9 md:h-11 px-4 rounded-lg md:rounded-xl border border-gray-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 focus:border-primary transition-colors pointer-events-auto"
                             placeholder="Enter your city"
                           />
                         </div>
@@ -306,24 +306,29 @@ Total: ${totalPrice} MAD
                     <span className="text-sm md:text-lg font-bold text-gray-900">{totalPrice} MAD</span>
                   </div>
                 )}
-                <div className="flex gap-2">
+                <div className="flex flex-col gap-2.5">
                   {cartStep === 1 && items.length > 0 && (
-                    <Button
+                    <button
                       onClick={() => setCartStep(2)}
-                      className="w-full h-10 md:h-12 rounded-sm text-xs md:text-sm font-bold cursor-pointer"
+                      className="w-full h-11 md:h-13 rounded-full text-xs md:text-sm font-bold cursor-pointer bg-primary hover:bg-[#9ac58e] text-[#fbfbe5] transition-all flex items-center justify-between px-2 pl-6 md:pl-8 group shadow-sm"
                     >
-                      Next Step
-                    </Button>
+                      <span className="font-fauna tracking-widest text-[11px] md:text-[14px]">Next Step</span>
+                      <div className="bg-[#fbfbe5] rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center transition-transform group-active:scale-95">
+                        <ArrowRight size={16} className="text-primary" />
+                      </div>
+                    </button>
                   )}
                   {cartStep === 2 && (
-                    <Button
+                    <button
                       onClick={handlePlaceOrder}
                       disabled={!isFormValid}
-                      className="w-full h-10 md:h-12 rounded-sm text-xs md:text-sm font-bold cursor-pointer"
+                      className="w-full h-11 md:h-13 rounded-full text-xs md:text-sm font-bold cursor-pointer bg-primary hover:bg-[#9ac58e] text-[#fbfbe5] disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-between px-2 pl-6 md:pl-8 group shadow-sm"
                     >
-                      <Package className="w-3.5 h-3.5 md:w-4 md:h-4 mr-2" />
-                      Place Order
-                    </Button>
+                      <span className="font-fauna tracking-widest text-[11px] md:text-[14px]">Place Order</span>
+                      <div className="bg-[#fbfbe5] rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center transition-transform group-active:scale-95">
+                        <CheckCircle2 size={16} className="text-primary" />
+                      </div>
+                    </button>
                   )}
                 </div>
               </div>

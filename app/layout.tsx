@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, Dancing_Script } from "next/font/google";
+import { Open_Sans, Dancing_Script } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 import { CartProvider } from "@/components/cart-provider";
@@ -10,9 +10,9 @@ import SplashScreen from "@/components/splash-screen";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
-const inter = Inter({ 
+const openSans = Open_Sans({ 
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-open-sans",
 });
 
 const dancingScript = Dancing_Script({
@@ -249,7 +249,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${dancingScript.variable} antialiased`} suppressHydrationWarning>
+      <body className={`${openSans.variable} ${dancingScript.variable} antialiased`} suppressHydrationWarning>
         <SplashScreen />
         <CartProvider>
           {children}
