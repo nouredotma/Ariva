@@ -49,7 +49,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/products", label: "Explore" },
-    { href: "/products?categories=true", label: "Categories" },
+    { href: "/categories", label: "Categories" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ]
@@ -125,7 +125,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
               >
                 <ShoppingCart className="w-5 h-5" />
                 <span className={cn(
-                  "absolute -top-1 -right-1 w-4 h-4 rounded-full text-white text-[9px] font-bold flex items-center justify-center shadow-sm transition-colors",
+                  "absolute -top-1 -right-1 w-4 h-4 rounded-full text-white text-[9px] font-normal flex items-center justify-center shadow-sm transition-colors",
                   totalItems === 0 ? "bg-gray-400" : "bg-primary"
                 )}>
                   {totalItems}
@@ -201,7 +201,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
                 >
                   <ShoppingCart className="w-5 h-5" />
                   <span className={cn(
-                    "absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full text-white text-[9px] font-bold flex items-center justify-center shadow-sm transition-colors",
+                    "absolute -top-1 -right-1 w-4 h-4 rounded-full text-white text-[9px] font-normal flex items-center justify-center shadow-sm transition-colors",
                     totalItems === 0 ? "bg-gray-400" : "bg-primary"
                   )}>
                     {totalItems}

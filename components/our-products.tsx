@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { bestCategories, type Category } from "@/lib/products-data"
+import { bestCategories, categories as allCategories, type Category } from "@/lib/products-data"
 import { ArrowRight, Package, Heart } from "lucide-react"
 import { motion } from "framer-motion"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -40,7 +40,19 @@ const CategoryBridgeShape = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export default function OurProducts({ isWhite = false }: { isWhite?: boolean }) {
+interface OurProductsProps {
+  isWhite?: boolean
+  showViewAll?: boolean
+  showAll?: boolean
+  showTitle?: boolean
+}
+
+export default function OurProducts({ 
+  isWhite = false, 
+  showViewAll = true, 
+  showAll = false,
+  showTitle = true 
+}: OurProductsProps) {
   const [cats, setCats] = useState<Category[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -48,13 +60,13 @@ export default function OurProducts({ isWhite = false }: { isWhite?: boolean }) 
     const fetchCategories = () => {
       setIsLoading(true)
       
-      // Get categories from local data
-      setCats(bestCategories)
+      // Get categories from local data — show all or just best 4
+      setCats(showAll ? allCategories : bestCategories)
       setIsLoading(false)
     }
 
     fetchCategories()
-  }, [])
+  }, [showAll])
 
   const bgColor = isWhite ? "bg-white" : "bg-[#fbfbe5]";
   const accentColor = isWhite ? "text-white" : "text-[#fbfbe5]";
@@ -62,7 +74,7 @@ export default function OurProducts({ isWhite = false }: { isWhite?: boolean }) 
   const accentBorder = isWhite ? "border-white" : "border-[#fbfbe5]";
 
   return (
-    <section className={`relative w-full ${bgColor} py-6 mt-24 md:mt-40 mb-24 md:mb-40 overflow-visible`}>
+    <section className={`relative w-full ${bgColor} py-6 mb-24 md:mb-40 overflow-visible`}>
       {/* Absolute Top Shape - positioned relative to section top */}
       <OurProductsTopShape className={`absolute bottom-[99.5%] left-0 w-full h-[100px] md:h-[180px] ${accentColor}`} />
       
@@ -70,28 +82,41 @@ export default function OurProducts({ isWhite = false }: { isWhite?: boolean }) 
       <OurProductsBottomShape className={`absolute top-[99.5%] left-0 w-full h-[100px] md:h-[180px] ${accentColor}`} />
 
       <div className="max-w-full mx-auto px-2 md:px-12 relative z-10">
-        <div className={`w-full flex items-end justify-between mb-8 ${accentColor} gap-0`}>
-          
-          {/* Left Title - Full Rounded */}
-          <div className="bg-primary h-10 md:h-14 rounded-full px-5 md:px-8 flex items-center justify-center shrink-0 relative z-10">
-            <h2 className="text-sm md:text-xl font-bold font-fauna tracking-tight whitespace-nowrap pt-1">
-              Shop by Category
-            </h2>
-          </div>
-          
-          {/* Center Bridge - Perfectly tucked behind the semi-circles to merge beautifully at the tangency point */}
-          <div className="flex-1 h-10 md:h-14 relative z-0 -mx-5 md:-mx-7 flex items-end">
-            <CategoryBridgeShape className="w-full h-full text-primary" />
-          </div>
+        {showTitle && (
+          <div className={`w-full flex items-end justify-between mb-8 ${accentColor} gap-0`}>
+            
+            {showViewAll ? (
+              <>
+                {/* Left Title - Full Rounded */}
+                <div className="bg-primary h-10 md:h-14 rounded-full px-5 md:px-8 flex items-center justify-center shrink-0 relative z-10">
+                  <h2 className="text-sm md:text-xl font-bold font-fauna tracking-tight whitespace-nowrap pt-1">
+                    Shop by Category
+                  </h2>
+                </div>
+                
+                {/* Center Bridge - Perfectly tucked behind the semi-circles to merge beautifully at the tangency point */}
+                <div className="flex-1 h-10 md:h-14 relative z-0 -mx-5 md:-mx-7 flex items-end">
+                  <CategoryBridgeShape className="w-full h-full text-primary" />
+                </div>
 
-          {/* Right Link - Full Rounded with reduced padding */}
-          <Link href="/products" className="bg-primary h-10 md:h-14 rounded-full px-4 md:px-6 flex items-center justify-center gap-2 group shrink-0 relative z-10">
-            <span className={`text-xs md:text-base font-medium border-b ${accentBorder} pb-0.5 font-fauna whitespace-nowrap`}>View all</span>
-            <div className={`${accentBg} rounded-full p-0.5 md:p-1 text-primary`}>
-              <ArrowRight className="w-3 h-3 md:w-4 md:h-4 stroke-3" />
-            </div>
-          </Link>
-        </div>
+                {/* Right Link - Full Rounded with reduced padding */}
+                <Link href="/categories" className="bg-primary h-10 md:h-14 rounded-full px-4 md:px-6 flex items-center justify-center gap-2 group shrink-0 relative z-10">
+                  <span className={`text-xs md:text-base font-medium border-b ${accentBorder} pb-0.5 font-fauna whitespace-nowrap`}>View all</span>
+                  <div className={`${accentBg} rounded-full p-0.5 md:p-1 text-primary`}>
+                    <ArrowRight className="w-3 h-3 md:w-4 md:h-4 stroke-3" />
+                  </div>
+                </Link>
+              </>
+            ) : (
+              /* Title Only - No bridge, no View All link */
+              <div className="bg-primary h-10 md:h-14 rounded-full px-5 md:px-8 flex items-center justify-center shrink-0 relative z-10">
+                <h2 className="text-sm md:text-xl font-bold font-fauna tracking-tight whitespace-nowrap pt-1">
+                  Categories
+                </h2>
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="w-full">
           {isLoading ? (
@@ -127,7 +152,7 @@ export default function OurProducts({ isWhite = false }: { isWhite?: boolean }) 
                     transition={{ delay: index * 0.05 }}
                   >
                     <Link
-                      href={`/collections/${cat.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                      href={`/products?category=${encodeURIComponent(cat.name)}`}
                       className={`group relative transition-all duration-300 h-full flex flex-col ${accentBg} hover:bg-[#c1d1be] rounded-xs md:rounded-md overflow-hidden`}
                     >
                       {/* Image Section */}

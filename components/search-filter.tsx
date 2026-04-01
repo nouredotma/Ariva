@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import { Search, Check } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { categories } from "@/lib/products-data"
 
 export interface Filters {
   minPrice?: number | null
@@ -31,14 +32,12 @@ export default function SearchFilter({ onChange, initial }: Props) {
     setCategory(initial?.category ?? "all")
   }, [initial?.search, initial?.minPrice, initial?.maxPrice, initial?.category])
 
-  const CONDITIONS = [
-    { name: "Honey", value: "Honey", image: "/p1.png" },
-    { name: "Tinctures", value: "Herbal Tinctures & Capsules", image: "/p1.png" },
-    { name: "Essential Oils", value: "Essential Oils & Aromatherapy", image: "/p1.png" },
-    { name: "Argan Oil", value: "Argan Oil", image: "/p1.png" },
-    { name: "Cosmetics", value: "Natural Cosmetics", image: "/p1.png" },
-    { name: "Spices", value: "Spices", image: "/p1.png" },
-  ]
+  // Build filter options from actual category data
+  const CONDITIONS = categories.map((cat) => ({
+    name: cat.name.length > 15 ? cat.name.split(" ")[0] : cat.name,
+    value: cat.name,
+    image: cat.image,
+  }))
 
   const emit = () => {
     onChange({
@@ -87,7 +86,7 @@ export default function SearchFilter({ onChange, initial }: Props) {
                 {/* Product Image - Scale logic */}
                 <div 
                   className={cn(
-                    "relative w-[70%] h-[70%] transition-transform duration-500",
+                    "relative w-full h-full transition-transform duration-500",
                     isActive ? "scale-110" : "group-hover:scale-110"
                   )}
                 >
@@ -96,7 +95,7 @@ export default function SearchFilter({ onChange, initial }: Props) {
                     alt={opt.name}
                     fill
                     sizes="(max-width: 768px) 96px, 144px"
-                    className="object-contain"
+                    className="object-cover"
                     priority
                   />
                 </div>

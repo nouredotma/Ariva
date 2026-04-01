@@ -1,4 +1,4 @@
-﻿import type { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://universinstrument.com";
@@ -16,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/categories`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/contact`,

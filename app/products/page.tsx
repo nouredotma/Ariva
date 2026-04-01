@@ -96,7 +96,7 @@ function ProductsContent() {
   }
 
   return (
-    <main className="w-full bg-neutral-50/50 min-h-screen">
+    <main className="w-full bg-white min-h-screen">
       <Header />
 
       {/* Breadcrumb Section */}

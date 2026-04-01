@@ -92,7 +92,7 @@ const ProductsGrid = memo(function ProductsGrid({ products, isLoading, variant =
               </div>
 
                 {/* Content Section */}
-              <div className={`pt-2 pb-1 px-3 md:px-4 flex flex-col grow ${variant === 'horizontal' ? 'justify-between min-h-[100px]' : ''}`}>
+              <div className={`pt-2 pb-2 md:pb-4 px-3 md:px-4 flex flex-col grow ${variant === 'horizontal' ? 'justify-between min-h-[100px]' : ''}`}>
                 <div className="flex flex-col">
                   <h3 className="text-[14px] md:text-lg font-bold group-hover:text-primary transition-colors line-clamp-1 w-full font-fauna mb-0.5" style={{ color: 'var(--neutral-900)' }}>
                     {product.name}
