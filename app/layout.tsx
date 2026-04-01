@@ -223,7 +223,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" dir="ltr" className="loading-lock" suppressHydrationWarning>
+    <html lang="en" dir="ltr" className="loading-lock" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         {/* Preconnect to external resources */}
         <link
