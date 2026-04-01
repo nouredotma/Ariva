@@ -3,6 +3,7 @@
 import Header from "@/components/header"
 import Hero from "@/components/hero"
 import Ourproducts from "@/components/our-products"
+import PopularProducts from "@/components/popular-products"
 import WhatWeOffer from "@/components/what-we-offer"
 import Testimonials from "@/components/testimonials"
 import Footer from "@/components/footer"
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Header />
       <Hero />
       <Ourproducts />
+      <PopularProducts />
       <Testimonials />
       <WhatWeOffer />
       <Footer />

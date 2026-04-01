@@ -19,7 +19,7 @@ const ProductsGrid = memo(function ProductsGrid({ products, isLoading }: Product
       <div className="products-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
         {[...Array(8)].map((_, index) => (
           <div key={index} className="h-full flex flex-col bg-white border border-neutral-100/50 shadow-sm rounded-xs md:rounded-md p-2">
-            <Skeleton className="relative aspect-3/4 w-full rounded-xs md:rounded-md rounded-b-none mb-3" />
+            <Skeleton className="relative aspect-square w-full rounded-xs md:rounded-md rounded-b-none mb-3" />
             <div className="flex flex-col grow gap-2 p-1 md:py-1 md:px-2">
               <Skeleton className="w-16 h-3 md:h-4" />
               <Skeleton className="w-3/4 h-4 md:h-6" />
@@ -56,7 +56,7 @@ const ProductsGrid = memo(function ProductsGrid({ products, isLoading }: Product
               className="group relative transition-all duration-300 h-full flex flex-col bg-[#fbfbe5] hover:bg-[#c1d1be] rounded-xs md:rounded-md overflow-hidden"
             >
               {/* Image Section */}
-              <div className="relative aspect-3/4 overflow-hidden rounded-xs md:rounded-md rounded-b-none md:rounded-b-none p-2 md:p-4 pb-0 md:pb-0 group/imgContainer">
+              <div className="relative aspect-square overflow-hidden rounded-xs md:rounded-md rounded-b-none md:rounded-b-none p-2 md:p-4 pb-0 md:pb-0 group/imgContainer">
                 <div className="relative w-full h-full">
                   <Image
                     src={product.mainImage || "/placeholder.svg"}
@@ -92,9 +92,12 @@ const ProductsGrid = memo(function ProductsGrid({ products, isLoading }: Product
                   {product.shortDescription}
                 </p>
 
+                <div className="flex items-center justify-between mt-auto mb-3 px-1">
+                  <span className="text-xs text-neutral-500 line-clamp-1">{product.city}</span>
+                  <span className="text-sm md:text-base font-bold text-neutral-900 whitespace-nowrap">{product.price} MAD</span>
+                </div>
 
-
-                <div className="self-end mt-auto flex items-center gap-3 bg-primary p-1 pr-1 pl-4 rounded-full group/btn hover:bg-[#9ac58e] transition-all shadow-sm">
+                <div className="self-end flex items-center gap-3 bg-primary p-1 pr-1 pl-4 rounded-full group/btn hover:bg-[#9ac58e] transition-all shadow-sm">
                   <span className="text-[11px] md:text-[13px] font-bold font-fauna text-[#fbfbe5] tracking-widest leading-none">
                     View
                   </span>
