@@ -6,7 +6,7 @@ import Footer from "@/components/footer"
 import Header from "@/components/header"
 
 import { Container } from "@/components/ui/container"
-import { ArrowRight, Clock, Mail, MapPin, MessageCircle, Phone, ChevronRight } from "lucide-react"
+import { ArrowRight, Clock, Mail, MapPin, MessageCircle, Phone, ChevronRight, CheckCircle2, Calendar, Send, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -44,8 +44,8 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Call Us",
-      value: "+212 600 000 000",
-      action: "tel:+212600000000",
+      value: "+212 666 166 945",
+      action: "tel:+212666166945",
     },
     {
       icon: Mail,
@@ -60,7 +60,7 @@ export default function ContactPage() {
       subValue: "Agadir, Morocco 80000",
     },
     {
-      icon: Clock,
+      icon: Calendar,
       title: "Working Hours",
       value: "Monday - Saturday",
       subValue: "09:00 AM - 06:00 PM",
@@ -68,19 +68,19 @@ export default function ContactPage() {
   ]
 
   const subjects = [
-    { value: "General Inquiry", label: "General Inquiry" },
-    { value: "Tour Booking", label: "Tour Booking" },
-    { value: "Custom Package", label: "Custom Package" },
-    { value: "Group Travel", label: "Group Travel" },
-    { value: "Transportation", label: "Transportation" },
+    { value: "Product Inquiry", label: "Product Inquiry" },
+    { value: "Order Status", label: "Order Status" },
+    { value: "Wholesale/B2B", label: "Wholesale/B2B" },
+    { value: "Shipping/Delivery", label: "Shipping/Delivery" },
+    { value: "General Feedback", label: "General Feedback" },
     { value: "Other", label: "Other" },
   ]
 
   const whyChooseUsItems = [
-    "Local expertise",
-    "Personalized experiences",
-    "24/7 support",
-    "Best prices",
+    "100% Pure Argan",
+    "Organic Certified",
+    "Traditional Extraction",
+    "Sustainable Sourcing",
   ]
 
   return (
@@ -88,17 +88,17 @@ export default function ContactPage() {
       <Header />
 
       {/* Breadcrumb Section */}
-      <div className="pt-44 pb-6 md:pb-8">
+      <div className="pt-44 pb-4 md:pb-6">
         <Container className="max-w-full mx-auto px-4 md:px-12">
-            <nav className="flex items-center gap-1.5 text-[10px] md:text-sm text-muted-foreground leading-none">
-                <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-                <ChevronRight className="w-3 h-3 md:w-3.5 md:h-3.5 -mt-px" />
-                <span className="text-primary font-medium">Contact</span>
+            <nav className="flex items-center gap-1.5 text-[10px] md:text-[11px] lg:text-sm text-muted-foreground leading-none overflow-hidden">
+                <Link href="/" className="hover:text-primary transition-colors shrink-0">Home</Link>
+                <ChevronRight className="w-3 h-3 md:w-3.5 md:h-3.5 shrink-0" />
+                <span className="text-primary font-medium truncate">Contact</span>
             </nav>
         </Container>
       </div>
 
-      <section className="pb-16 md:pb-24" style={{ backgroundColor: 'var(--neutral-50)' }}>
+      <section className="bg-white min-h-screen pb-16 md:pb-24">
         <Container className="max-w-full mx-auto px-4 md:px-12">
           {/* Quick Contact Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-12 md:mb-16">
@@ -106,11 +106,12 @@ export default function ContactPage() {
               <a
                 key={index}
                 href={info.action || "#"}
-                className="group relative bg-card rounded-xl p-4 md:p-5 border border-border/50 hover:border-primary transition-all duration-300 cursor-pointer"
+                className="group relative bg-white rounded-xl p-4 md:p-6 border border-neutral-200 transition-all duration-500 cursor-pointer overflow-hidden"
               >
+                <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="flex flex-col items-center text-center gap-3 w-full">
-                  <div className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                    <info.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <info.icon className="w-4 h-4 md:w-5 md:h-5 text-primary group-hover:text-white" />
                   </div>
                   <div className="w-full overflow-hidden">
                     <p className="text-xs text-muted-foreground mb-1">{info.title}</p>
@@ -130,24 +131,27 @@ export default function ContactPage() {
             <div className="lg:col-span-2 space-y-6">
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">
-                  <MessageCircle className="w-3.5 h-3.5" />
+                  <Sparkles className="w-3.5 h-3.5" />
                   Let's Talk
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3 font-fauna">
-                  Ready to plan your <span className="text-primary">adventure?</span>
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 font-fauna tracking-tight">
+                  Ready to experience <span className="text-primary">Moroccan Liquid Gold?</span>
                 </h2>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Have questions about our products or need help choosing? Our team is here to assist you.
+                <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-md">
+                  Have questions about our pure organic argan oils or need help choosing the right cosmetic products for your routine? Our team in Agadir is here to guide you.
                 </p>
               </div>
 
               {/* Why Choose Us */}
-              <div className="bg-linear-to-br from-primary/5 via-primary/3 to-transparent rounded-xl p-5 border border-primary/10">
-                <h3 className="font-semibold text-foreground mb-3 text-sm font-fauna">Why Choose Us</h3>
-                <ul className="space-y-2.5">
+              <div className="bg-primary/5 rounded-2xl p-6 border border-primary/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16 blur-3xl" />
+                <h3 className="font-bold text-neutral-900 mb-4 text-base font-fauna tracking-wide">Why Ariva</h3>
+                <ul className="space-y-4">
                   {whyChooseUsItems.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2.5 text-sm text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                    <li key={i} className="flex items-center gap-3 text-sm text-neutral-600 font-medium tracking-wide">
+                      <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                         <CheckCircle2 className="w-3 h-3 text-primary" />
+                      </div>
                       {item}
                     </li>
                   ))}
@@ -155,21 +159,25 @@ export default function ContactPage() {
               </div>
 
               {/* Response Time */}
-              <div className="flex items-center gap-3 p-4 rounded-lg bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <p className="text-sm text-green-700 dark:text-green-400">
-                  Average response time: <span className="font-semibold">under 2 hours</span>
+              <div className="flex items-center gap-3 p-4 rounded-2xl bg-primary/5 border border-primary/10">
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <p className="text-sm text-neutral-900 font-medium font-fauna tracking-wide">
+                  Average response time: <span className="text-primary font-bold">under 2 hours</span>
                 </p>
               </div>
             </div>
 
             {/* Right Side - Form */}
             <div className="lg:col-span-3">
-              <div className="bg-card rounded-2xl p-6 md:p-8 border border-border shadow-none">
-                <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="bg-primary rounded-lg px-3 md:px-10 py-6 md:py-10 relative overflow-hidden">
+                {/* Decorative background element */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full -ml-32 -mb-32 blur-3xl pointer-events-none" />
+                
+                <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-xs font-medium text-foreground mb-2">
+                      <label htmlFor="name" className="block text-xs font-bold text-[#fbfbe5] uppercase tracking-widest mb-2 font-fauna">
                         Full Name
                       </label>
                       <input
@@ -179,12 +187,12 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
+                        className="w-full px-4 py-3.5 rounded-xl border-none bg-[#fbfbe5] text-primary text-sm placeholder:text-primary/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
                         placeholder="John Doe"
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-xs font-medium text-foreground mb-2">
+                      <label htmlFor="phone" className="block text-xs font-bold text-[#fbfbe5] uppercase tracking-widest mb-2 font-fauna">
                         Phone Number
                       </label>
                       <input
@@ -193,15 +201,15 @@ export default function ContactPage() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
-                        placeholder="+212 600 000 000"
+                        className="w-full px-4 py-3.5 rounded-xl border-none bg-[#fbfbe5] text-primary text-sm placeholder:text-primary/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all shadow-inner"
+                        placeholder="+212 666 166 945"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="email" className="block text-xs font-medium text-foreground mb-2">
+                      <label htmlFor="email" className="block text-xs font-bold text-[#fbfbe5] uppercase tracking-widest mb-2 font-fauna">
                         Email Address
                       </label>
                       <input
@@ -211,12 +219,12 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
+                        className="w-full px-4 py-3.5 rounded-xl border-none bg-[#fbfbe5] text-primary text-sm placeholder:text-primary/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all shadow-inner"
                         placeholder="john@example.com"
                       />
                     </div>
                     <div>
-                      <label htmlFor="subject" className="block text-xs font-medium text-foreground mb-2">
+                      <label htmlFor="subject" className="block text-xs font-bold text-[#fbfbe5] uppercase tracking-widest mb-2 font-fauna">
                         Subject
                       </label>
                       <select
@@ -225,7 +233,7 @@ export default function ContactPage() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all appearance-none cursor-pointer"
+                        className="w-full px-4 py-3.5 rounded-xl border-none bg-[#fbfbe5] text-primary text-sm focus:outline-none focus:ring-2 focus:ring-white/30 transition-all appearance-none cursor-pointer shadow-inner"
                       >
                         <option value="">Select a topic</option>
                         {subjects.map((subject) => (
@@ -238,7 +246,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-xs font-medium text-foreground mb-2">
+                    <label htmlFor="message" className="block text-xs font-bold text-[#fbfbe5] uppercase tracking-widest mb-2 font-fauna">
                       Your Message
                     </label>
                     <textarea
@@ -248,7 +256,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       rows={4}
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all resize-none"
+                      className="w-full px-4 py-3.5 rounded-xl border-none bg-[#fbfbe5] text-primary text-sm placeholder:text-primary/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all shadow-inner resize-none"
                       placeholder="How can we help you?"
                     />
                   </div>
@@ -256,26 +264,27 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-3 px-6 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 disabled:opacity-70 transition-all duration-300 flex items-center justify-center gap-2 group font-fauna"
+                    className="w-full h-12 md:h-14 rounded-full text-xs md:text-sm font-bold cursor-pointer bg-[#fbfbe5] hover:bg-white text-primary transition-all flex items-center justify-between px-2 pl-6 md:pl-8 group disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    {isLoading ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        Send Message
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                      </>
-                    )}
+                    <span className="font-fauna tracking-widest text-[11px] md:text-[14px]">
+                      {isLoading ? "SENDING..." : "SEND MESSAGE"}
+                    </span>
+                    <div className="bg-primary rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center transition-transform group-active:scale-95">
+                      {isLoading ? (
+                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      ) : (
+                        <Send className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:translate-x-0.5 transition-transform" />
+                      )}
+                    </div>
                   </button>
 
                   {submitted && (
-                    <div className="p-3.5 rounded-lg bg-green-50 dark:bg-green-950/40 border border-green-200 dark:border-green-800 animate-in fade-in slide-in-from-bottom-2">
-                      <p className="text-sm text-green-700 dark:text-green-400 font-medium flex items-center gap-2">
-                        <span className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs">✓</span>
-                        Message sent successfully!
+                    <div className="p-4 rounded-xl bg-white/10 border border-white/20 backdrop-blur-md animate-in fade-in slide-in-from-bottom-2">
+                      <p className="text-sm text-[#fbfbe5] font-medium flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-[#fbfbe5] flex items-center justify-center">
+                          <CheckCircle2 className="w-4 h-4 text-primary" />
+                        </div>
+                        Message sent successfully! Our team will contact you soon.
                       </p>
                     </div>
                   )}
@@ -298,7 +307,8 @@ export default function ContactPage() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
-            <div className="rounded-xl overflow-hidden border border-border shadow-sm h-72 md:h-80">
+            <div className="rounded-2xl overflow-hidden border border-neutral-200 h-72 md:h-96 relative group">
+              <div className="absolute inset-x-0 top-0 h-2 bg-primary/20 z-10" />
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d109841.05388708892!2d-9.66442656360481!3d30.419967664326284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b6e9eaa124cb%3A0x6854199f1fa0ec0!2sAgadir!5e0!3m2!1sen!2sma!4v1700000000000!5m2!1sen!2sma"
                 width="100%"

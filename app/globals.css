@@ -205,6 +205,9 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   * {
     @apply border-border outline-ring/50;
   }

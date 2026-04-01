@@ -1,5 +1,4 @@
-"use client";
-
+import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const XIcon = ({ className }: { className?: string }) => (
@@ -39,16 +38,16 @@ export default function Footer() {
   const companyLinks = [
     { href: "/about", label: "About Us" },
     { href: "/contact", label: "Contact" },
-    { href: "/faq", label: "Frequently Asked Questions" },
+    { href: "/faq", label: "FAQ" },
     { href: "/careers", label: "Careers" },
   ];
 
   const supportLinks = [
-    { href: "/shipping", label: "Shipping Info" },
-    { href: "/returns", label: "Returns and Exchanges" },
-    { href: "/size-guide", label: "Size Guide" },
-    { href: "/privacy", label: "Privacy Policy" },
-    { href: "/terms", label: "Terms of Services" },
+    { href: "/support#shipping", label: "Shipping Info" },
+    { href: "/support#returns", label: "Returns and Exchanges" },
+    { href: "/support#size-guide", label: "Size Guide" },
+    { href: "/support#privacy", label: "Privacy Policy" },
+    { href: "/support#terms", label: "Terms of Services" },
   ];
 
   const socialLinks = [
@@ -66,7 +65,7 @@ export default function Footer() {
       
       <div className="max-w-full mx-auto px-2 md:px-12 relative">
         {/* Top Row: Logo */}
-        <div className="relative flex justify-center items-center pt-0 md:pt-8 pb-0 md:pb-8 border-b-[4px] border-[#fbfbe5] mb-12">
+        <div className="relative flex justify-center items-center pt-0 md:pt-8 pb-0 md:pb-8 border-b-4 border-[#fbfbe5] mb-12">
           {/* Edge Half Circles */}
           <div className="absolute left-[-16px] md:left-[-48px] top-[40%] -translate-y-1/2 w-15 h-30 lg:w-30 lg:h-60 bg-[#fbfbe5] rounded-r-full" />
           <div className="absolute right-[-16px] md:right-[-48px] top-[40%] -translate-y-1/2 w-15 h-30 lg:w-30 lg:h-60 bg-[#fbfbe5] rounded-l-full" />
@@ -74,13 +73,13 @@ export default function Footer() {
           {/* Custom Shape Logo Container */}
           <div className="relative w-[310px] h-[146px] md:w-[380px] md:h-[180px] flex items-center justify-center z-10">
             <LogoShapeBackground className="absolute inset-0 w-full h-full text-[#fbfbe5]" />
-            <a href="/" className="relative z-10 inline-flex items-center justify-center">
+            <Link href="/" className="relative z-10 inline-flex items-center justify-center">
               <img
                 src="/logo.png"
                 alt="Ariva Logo"
                 className="w-[100px] md:w-[130px] h-auto object-contain opacity-95 hover:opacity-100 transition-opacity"
               />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -115,13 +114,13 @@ export default function Footer() {
             <h4 className="text-xl font-bold mb-6 font-fauna tracking-wide text-[#fbfbe5]">Company</h4>
             <nav className="space-y-4">
               {companyLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   className="block text-sm font-light text-[#fbfbe5] hover:opacity-80 transition-opacity duration-200"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -131,13 +130,13 @@ export default function Footer() {
             <h4 className="text-xl font-bold mb-6 font-fauna tracking-wide text-[#fbfbe5]">Support</h4>
             <nav className="space-y-4">
               {supportLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   className="block text-sm font-light text-[#fbfbe5] hover:opacity-80 transition-opacity duration-200"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
