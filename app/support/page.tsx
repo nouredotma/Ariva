@@ -48,10 +48,10 @@ const sections = [
         <p>Your satisfaction is our priority. If you are not completely satisfied with your purchase, we are here to help.</p>
         <div className="space-y-4">
           <h4 className="font-bold text-neutral-900 font-fauna tracking-wide">Return Policy</h4>
-          <p className="text-sm text-muted-foreground">Items must be returned within 14 days of receipt. To be eligible for a return, your item must be unused, in the same condition that you received it, and in its original packaging with the cellophane seal intact.</p>
+          <p className="text-sm text-muted-foreground">Items must be returned within 14 days of receipt. To be eligible for a return, your item must be unused, unopened, in the same condition that you received it, and in its original sealed packaging.</p>
           
           <h4 className="font-bold text-neutral-900 font-fauna tracking-wide">Exchange Process</h4>
-          <p className="text-sm text-muted-foreground">If you wish to exchange a product for a different item, please contact our support team. We recommend reviewing our detailed product descriptions before purchasing larger sizes.</p>
+          <p className="text-sm text-muted-foreground">If you wish to exchange a product for a different item or size, please contact our support team. We recommend reviewing our detailed product descriptions and the Product Sizes section below before purchasing.</p>
           
           <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
             <p className="text-sm font-medium text-primary flex items-center gap-2">
@@ -65,44 +65,55 @@ const sections = [
   },
   {
     id: "size-guide",
-    title: "Size Guide",
+    title: "Product Sizes",
     icon: Ruler,
     content: (
       <div className="space-y-6">
-        <p>Choosing the right size for your routine. Our pure oils and natural extracts are highly concentrated, meaning a little goes a long way.</p>
+        <p>Our natural products come in a variety of sizes to suit your needs — from small trial sizes to family-sized quantities. Here's a quick guide to help you choose the right one.</p>
         <div className="overflow-hidden rounded-2xl border border-neutral-200">
           <table className="w-full text-left text-sm">
             <thead className="bg-primary/5 text-primary font-fauna">
               <tr>
-                <th className="px-6 py-4 font-bold">Size</th>
-                <th className="px-6 py-4 font-bold">Usage</th>
+                <th className="px-6 py-4 font-bold">Product Type</th>
+                <th className="px-6 py-4 font-bold">Available Sizes</th>
                 <th className="px-6 py-4 font-bold">Best For</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-200">
               <tr>
-                <td className="px-6 py-4 font-medium uppercase tracking-wider">2ml Sample</td>
-                <td className="px-6 py-4 text-muted-foreground">~30 sprays</td>
-                <td className="px-6 py-4 text-muted-foreground">Testing the scent</td>
+                <td className="px-6 py-4 font-medium">Argan Oil</td>
+                <td className="px-6 py-4 text-muted-foreground">30ml · 60ml · 100ml</td>
+                <td className="px-6 py-4 text-muted-foreground">Skin & hair care routines</td>
               </tr>
               <tr>
-                <td className="px-6 py-4 font-medium uppercase tracking-wider">10ml Travel</td>
-                <td className="px-6 py-4 text-muted-foreground">~150 sprays</td>
-                <td className="px-6 py-4 text-muted-foreground">On the go / Gift</td>
+                <td className="px-6 py-4 font-medium">Honey</td>
+                <td className="px-6 py-4 text-muted-foreground">250g · 500g · 1kg</td>
+                <td className="px-6 py-4 text-muted-foreground">Daily use & gifting</td>
               </tr>
               <tr>
-                <td className="px-6 py-4 font-medium uppercase tracking-wider">50ml Standard</td>
-                <td className="px-6 py-4 text-muted-foreground">~750 sprays</td>
-                <td className="px-6 py-4 text-muted-foreground">Daily signature</td>
+                <td className="px-6 py-4 font-medium">Essential Oils</td>
+                <td className="px-6 py-4 text-muted-foreground">10ml · 30ml · 50ml</td>
+                <td className="px-6 py-4 text-muted-foreground">Aromatherapy & wellness</td>
               </tr>
               <tr>
-                <td className="px-6 py-4 font-medium uppercase tracking-wider">100ml Large</td>
-                <td className="px-6 py-4 text-muted-foreground">~1500 sprays</td>
-                <td className="px-6 py-4 text-muted-foreground">Collectors / Long-term</td>
+                <td className="px-6 py-4 font-medium">Spices</td>
+                <td className="px-6 py-4 text-muted-foreground">50g · 100g · 250g</td>
+                <td className="px-6 py-4 text-muted-foreground">Cooking & seasoning</td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 font-medium">Herbal Capsules</td>
+                <td className="px-6 py-4 text-muted-foreground">30 caps · 60 caps · 120 caps</td>
+                <td className="px-6 py-4 text-muted-foreground">Daily supplementation</td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 font-medium">Natural Cosmetics</td>
+                <td className="px-6 py-4 text-muted-foreground">30ml · 50ml · 100ml</td>
+                <td className="px-6 py-4 text-muted-foreground">Skincare & body care</td>
               </tr>
             </tbody>
           </table>
         </div>
+        <p className="text-sm text-muted-foreground">All sizes are approximate. Our products are made from natural ingredients; slight variations in weight or volume may occur between batches.</p>
       </div>
     ),
   },

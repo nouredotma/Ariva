@@ -3,20 +3,24 @@
 import { useCart } from "@/components/cart-provider"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
+import SearchOverlay from "@/components/search-overlay"
 import { cn } from "@/lib/utils"
 import { AnimatePresence, motion } from "framer-motion"
-import { ShoppingCart, User, Heart, Search } from "lucide-react"
+import { ShoppingCart, User, Heart, Search, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
+import { useEffect, useState, useCallback, useRef } from "react"
 
 export default function Header({ isStatic = false, forceScrolled = false }: { isStatic?: boolean, forceScrolled?: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
   const { totalItems, toggleCartModal } = useCart()
   const [searchQuery, setSearchQuery] = useState("")
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const searchInputRef = useRef<HTMLInputElement>(null)
   
   const isSolid = hasScrolled || forceScrolled
 
@@ -166,18 +170,42 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
                 {/* Search Bar */}
                 <div className="relative group flex items-center">
                   <input
+                    id="desktop-search-input"
+                    ref={searchInputRef}
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Search products..."
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value)
+                      if (!isSearchOpen) setIsSearchOpen(true)
+                    }}
+                    onFocus={() => setIsSearchOpen(true)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && searchQuery.trim()) {
+                        setIsSearchOpen(false)
+                        router.push(`/products?q=${encodeURIComponent(searchQuery.trim())}`)
+                      }
+                    }}
                     className={cn(
                       "h-10 pl-4 pr-12 text-sm rounded-full border-none outline-none focus:ring-2 focus:ring-primary transition-all duration-300 w-[200px] lg:w-[260px]",
                       (isSolid || isUsersSection) ? "bg-black/5 border border-gray-100" : "bg-black/5 text-gray-800 placeholder:text-gray-400"
                     )}
                   />
-                  <div className="absolute right-1 w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white cursor-pointer hover:bg-primary-600 transition-colors">
-                    <Search className="w-4 h-4" />
-                  </div>
+                  {searchQuery ? (
+                    <button
+                      onClick={() => {
+                        setSearchQuery("")
+                        searchInputRef.current?.focus()
+                      }}
+                      className="absolute right-1 w-8 h-8 flex items-center justify-center rounded-full bg-neutral-200 text-neutral-600 cursor-pointer hover:bg-neutral-300 transition-colors"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  ) : (
+                    <div className="absolute right-1 w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white cursor-pointer hover:bg-primary-600 transition-colors">
+                      <Search className="w-4 h-4" />
+                    </div>
+                  )}
                 </div>
 
                 {/* Person Icon */}
@@ -222,6 +250,19 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
             </div>
           </div>
         </Container>
+
+        {/* Search Results Overlay - Desktop Only */}
+        <div className="hidden md:block">
+          <SearchOverlay
+            query={searchQuery}
+            isOpen={isSearchOpen}
+            onClose={() => setIsSearchOpen(false)}
+            onClear={() => {
+              setSearchQuery("")
+              setIsSearchOpen(false)
+            }}
+          />
+        </div>
 
         {/* Mobile Menu */}
         <AnimatePresence>
