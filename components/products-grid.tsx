@@ -3,7 +3,7 @@
 import { memo } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Package, Heart } from "lucide-react"
+import { Package, Heart, ArrowRight } from "lucide-react"
 import type { Product } from "@/lib/products-data"
 import { motion } from "framer-motion"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -19,7 +19,7 @@ const ProductsGrid = memo(function ProductsGrid({ products, isLoading }: Product
       <div className="products-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
         {[...Array(8)].map((_, index) => (
           <div key={index} className="h-full flex flex-col bg-white border border-neutral-100/50 shadow-sm rounded-xs md:rounded-md p-2">
-            <Skeleton className="relative aspect-square w-full rounded-xs md:rounded-md rounded-b-none mb-3" />
+            <Skeleton className="relative aspect-3/4 w-full rounded-xs md:rounded-md rounded-b-none mb-3" />
             <div className="flex flex-col grow gap-2 p-1 md:py-1 md:px-2">
               <Skeleton className="w-16 h-3 md:h-4" />
               <Skeleton className="w-3/4 h-4 md:h-6" />
@@ -53,11 +53,10 @@ const ProductsGrid = memo(function ProductsGrid({ products, isLoading }: Product
           >
             <Link
               href={`/products/${product.id}`}
-              className="group relative transition-all duration-300 h-full flex flex-col hover:bg-[#fbfbe2] rounded-xs md:rounded-md overflow-hidden"
-              style={{ backgroundColor: '#fbfbe5' }}
+              className="group relative transition-all duration-300 h-full flex flex-col bg-[#fbfbe5] hover:bg-[#c1d1be] rounded-xs md:rounded-md overflow-hidden"
             >
               {/* Image Section */}
-              <div className="relative aspect-square overflow-hidden rounded-xs md:rounded-md rounded-b-none md:rounded-b-none p-4 md:p-6 group/imgContainer">
+              <div className="relative aspect-3/4 overflow-hidden rounded-xs md:rounded-md rounded-b-none md:rounded-b-none p-2 md:p-4 pb-0 md:pb-0 group/imgContainer">
                 <div className="relative w-full h-full">
                   <Image
                     src={product.mainImage || "/placeholder.svg"}
@@ -65,25 +64,25 @@ const ProductsGrid = memo(function ProductsGrid({ products, isLoading }: Product
                     fill
                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     priority={index < 4}
-                    className="object-contain"
+                    className="object-cover rounded-xs md:rounded-md"
                   />
                 </div>
                 
                 {/* Heart Button */}
                 <button 
-                  className="absolute top-4 right-4 p-1 rounded-full transition-all duration-300 z-10 active:scale-95 group/heart"
+                  className="absolute top-6 right-6 p-1 rounded-full transition-all duration-300 z-10 active:scale-95 group/heart cursor-pointer"
                   onClick={(e) => {
                     e.preventDefault();
                     // Favorite logic would go here
                   }}
                 >
-                  <Heart size={21} className="fill-current text-[#f3bcbc] hover:text-[#f3bcbc] active:text-[#df2727] focus:text-[#df2727] transition-colors duration-300" />
+                  <Heart size={28} className="fill-current  text-[#fdfdf0]/50 hover:text-[#f3bcbc] active:text-[#df2727] focus:text-[#df2727] transition-colors duration-300" />
                 </button>
               </div>
 
                 {/* Content Section */}
-              <div className="py-2 md:py-3 flex flex-col grow">
-                <div className="flex mb-1">
+              <div className="py-1 px-2 md:px-4 pb-2 md:pb-4  flex flex-col grow">
+                <div className="flex">
                   <h3 className="text-sm md:text-lg font-semibold group-hover:text-primary transition-colors line-clamp-1 w-full font-fauna" style={{ color: 'var(--neutral-900)' }}>
                     {product.name}
                   </h3>
@@ -95,8 +94,13 @@ const ProductsGrid = memo(function ProductsGrid({ products, isLoading }: Product
 
 
 
-                <div className="self-end bg-primary text-primary-foreground group-hover:bg-primary-600 transition-all px-3 md:px-4 py-2 md:py-2.5 rounded-full text-[11px] md:text-sm font-fauna">
-                  View Details
+                <div className="self-end mt-auto flex items-center gap-3 bg-primary p-1 pr-1 pl-4 rounded-full group/btn hover:bg-[#9ac58e] transition-all shadow-sm">
+                  <span className="text-[11px] md:text-[13px] font-bold font-fauna text-[#fbfbe5] tracking-widest leading-none">
+                    View
+                  </span>
+                  <div className="bg-[#fbfbe5] w-7 h-7 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-transform duration-300">
+                    <ArrowRight size={16} className="text-primary" />
+                  </div>
                 </div>
               </div>
             </Link>

@@ -21,7 +21,7 @@ export interface Product {
 }
 
 // Single image used across all products for demonstration
-const PRODUCT_IMAGE = "/p1.png"
+const PRODUCT_IMAGE = "https://images.unsplash.com/photo-1587049352851-8d4e89133924?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 
 export const products: Product[] = [
   {
