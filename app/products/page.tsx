@@ -97,7 +97,7 @@ function ProductsContent() {
 
   return (
     <main className="w-full bg-neutral-50/50 min-h-screen">
-      <Header forceScrolled />
+      <Header />
 
       {/* Breadcrumb Section */}
       <div className="pt-44 pb-6 md:pb-8">

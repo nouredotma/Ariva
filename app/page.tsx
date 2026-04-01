@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import Header from "@/components/header"
 import Hero from "@/components/hero"
@@ -10,7 +10,7 @@ import Footer from "@/components/footer"
 export default function HomePage() {
   return (
     <main className="w-full">
-      <Header forceScrolled />
+      <Header />
       <Hero />
       <Ourproducts />
       <WhatWeOffer />

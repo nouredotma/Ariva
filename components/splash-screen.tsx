@@ -48,7 +48,7 @@ export default function SplashScreen() {
       }}
     >
       <Image
-        src="/logo.webp"
+        src="/logo.png"
         alt="Alhor Parfum"
         width={180}
         height={180}

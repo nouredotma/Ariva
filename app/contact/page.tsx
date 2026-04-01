@@ -85,7 +85,7 @@ export default function ContactPage() {
 
   return (
     <main className="w-full">
-      <Header forceScrolled />
+      <Header />
 
       {/* Breadcrumb Section */}
       <div className="pt-44 pb-6 md:pb-8">

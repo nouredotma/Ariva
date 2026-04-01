@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
 import { cn } from "@/lib/utils"
 import { AnimatePresence, motion } from "framer-motion"
-import { ShoppingCart } from "lucide-react"
+import { ShoppingCart, User, Heart, Search } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -16,6 +16,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
   const [hasScrolled, setHasScrolled] = useState(false)
   const pathname = usePathname()
   const { totalItems, toggleCartModal } = useCart()
+  const [searchQuery, setSearchQuery] = useState("")
   
   const isSolid = hasScrolled || forceScrolled
 
@@ -45,12 +46,12 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
     }
   }, [isMenuOpen])
 
-
-
-  const productLinks = [
-    { href: "/products?condition=men", label: "Men" },
-    { href: "/products?condition=women", label: "Women" },
-    { href: "/products?condition=unisex", label: "Unisex" },
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/products", label: "Explore" },
+    { href: "/products?categories=true", label: "Categories" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
   ]
 
   return (
@@ -73,7 +74,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
           <div className="md:hidden flex h-16 items-center justify-between">
             {/* Left: Logo */}
             <Link href="/" className="flex items-center z-10">
-              <Image src="/logo.webp" alt="Alhor Parfum Logo" width={128} height={56} className="h-14 w-auto object-contain" priority sizes="(max-width: 768px) 112px, 128px" />
+              <Image src="/logo.png" alt="Alhor Parfum Logo" width={128} height={56} className="h-12 w-auto object-contain" priority sizes="(max-width: 768px) 112px, 128px" />
             </Link>
 
             {/* Right: Menu Button */}
@@ -81,8 +82,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className={cn(
-                  "relative flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors",
-                  isSolid || isUsersSection ? "hover:bg-black/5" : "hover:bg-white/10"
+                  "relative flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors hover:bg-black/5"
                 )}
                 aria-label="Toggle menu"
               >
@@ -96,7 +96,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
                 >
                   <path
                     d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M3 12h18M3 6h18M3 18h18"}
-                    stroke={isSolid || isUsersSection ? "#000000" : "#ffffff"}
+                    stroke="#000000"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -113,72 +113,84 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
               {/* Left: Logo */}
               <div className="flex items-center gap-6 shrink-0">
                 <Link href="/" className="flex items-center">
-                  <Image src="/logo.webp" alt="Alhor Parfum Logo" width={160} height={56} className="h-14 w-auto object-contain" priority sizes="(max-width: 768px) 96px, 128px" />
+                  <Image src="/logo.png" alt="Alhor Parfum Logo" width={160} height={56} className="h-12 w-auto object-contain" priority sizes="(max-width: 768px) 96px, 128px" />
                 </Link>
               </div>
 
               {/* Center: Navigation Links */}
               <nav className="flex items-center gap-6 flex-1 justify-center">
-                <Link
-                  href="/"
-                  className={cn(
-                    "text-sm font-medium transition-all duration-300 relative group font-fauna tracking-wider hover:text-secondary",
-                    pathname === "/" ? "text-primary" : (isSolid || isUsersSection ? "text-gray-800" : "text-white")
-                  )}
-                >
-                  Home
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-
-                {productLinks.map((link) => (
+                {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     className={cn(
                       "text-sm font-medium transition-all duration-300 relative group font-fauna tracking-wider hover:text-secondary",
-                      (pathname === "/products" && typeof window !== 'undefined' && window.location.search.includes(`condition=${link.href.split('=')[1]}`)) ? "text-primary" : (isSolid || isUsersSection ? "text-gray-800" : "text-white")
+                      pathname === link.href ? "text-primary" : "text-gray-800"
                     )}
                   >
                     {link.label}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
                   </Link>
                 ))}
-
-
-
-                <Link
-                  href="/contact"
-                  className={cn(
-                    "text-sm font-medium transition-all duration-300 relative group font-fauna tracking-wider hover:text-secondary",
-                    pathname === "/contact" ? "text-primary" : (isSolid || isUsersSection ? "text-gray-800" : "text-white")
-                  )}
-                >
-                  Contact
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
-                </Link>
               </nav>
 
-              {/* Right: Contact, Cart */}
-              <div className="flex items-center gap-3 shrink-0">
+              {/* Right: Search, Person, Cart, Heart */}
+              <div className="flex items-center gap-4 shrink-0">
+                {/* Search Bar */}
+                <div className="relative group flex items-center">
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className={cn(
+                      "h-10 pl-4 pr-12 text-sm rounded-full border-none outline-none focus:ring-2 focus:ring-primary transition-all duration-300 w-[200px] lg:w-[260px]",
+                      (isSolid || isUsersSection) ? "bg-black/5 border border-gray-100" : "bg-black/5 text-gray-800 placeholder:text-gray-400"
+                    )}
+                  />
+                  <div className="absolute right-1 w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white cursor-pointer hover:bg-primary-600 transition-colors">
+                    <Search className="w-4 h-4" />
+                  </div>
+                </div>
+
+                {/* Person Icon */}
+                <Link
+                  href="/account"
+                  className={cn(
+                    "flex items-center justify-center transition-colors hover:text-secondary text-gray-800"
+                  )}
+                  aria-label="Account"
+                >
+                  <User className="w-5 h-5" />
+                </Link>
+
                 {/* Cart Icon */}
                 <button
                   onClick={() => toggleCartModal()}
                   className={cn(
-                    "relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10 transition-colors cursor-pointer",
-                    (isSolid || isUsersSection)
-                      ? "text-primary"
-                      : "text-white"
+                    "relative flex items-center justify-center w-8 h-8 transition-colors cursor-pointer hover:text-secondary text-gray-800"
                   )}
                   aria-label="Cart"
                 >
-                  <ShoppingCart className="w-5 h-5 md:w-6 md:h-6" />
+                  <ShoppingCart className="w-5 h-5" />
                   <span className={cn(
-                    "absolute top-0 right-0 w-4 h-4 rounded-full text-white text-[9px] font-light flex items-center justify-center shadow-sm transition-colors",
-                    totalItems === 0 ? "bg-yellow-500" : "bg-green-500"
+                    "absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full text-white text-[9px] font-bold flex items-center justify-center shadow-sm transition-colors",
+                    totalItems === 0 ? "bg-gray-400" : "bg-primary"
                   )}>
                     {totalItems}
                   </span>
                 </button>
+
+                {/* Heart Icon */}
+                <Link
+                  href="/favorites"
+                  className={cn(
+                    "flex items-center justify-center transition-colors hover:text-secondary text-gray-800"
+                  )}
+                  aria-label="Favorites"
+                >
+                  <Heart className="w-5 h-5" />
+                </Link>
               </div>
             </div>
           </div>
@@ -209,7 +221,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
                   {/* Header with close button */}
                   <div className="flex items-center justify-between px-3 py-4" style={{ backgroundColor: 'var(--color-bg-dark)' }}>
                     <Link href="/" className="inline-block" onClick={() => setIsMenuOpen(false)}>
-                      <Image src="/logo.webp" alt="Alhor Parfum Logo" width={128} height={40} className="h-10 w-auto object-contain" priority sizes="(max-width: 768px) 96px, 128px" />
+                      <Image src="/logo.png" alt="Alhor Parfum Logo" width={128} height={40} className="h-10 w-auto object-contain" priority sizes="(max-width: 768px) 96px, 128px" />
                     </Link>
                     <button
                       onClick={() => setIsMenuOpen(false)}
@@ -237,66 +249,48 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
                   {/* Navigation links */}
                   <div className="flex-1 overflow-y-auto py-3 px-1">
                     <nav className="space-y-0.5">
-                      <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.05 }}
-                      >
-                        <Link
-                          href="/"
-                          onClick={() => setIsMenuOpen(false)}
-                          className={cn(
-                            "flex items-center w-full py-4 px-4 transition-all duration-200 text-sm font-medium tracking-wide border-b border-gray-100 font-fauna",
-                            pathname === "/" ? "bg-primary/5 text-primary" : "text-gray-700 hover:text-primary"
-                          )}
-                        >
-                          Home
-                        </Link>
-                      </motion.div>
-
-                      {productLinks.map((link, idx) => (
+                      {navLinks.map((link, idx) => (
                         <motion.div
                           key={link.href}
                           initial={{ opacity: 0, x: 20 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.1 + (idx * 0.05) }}
+                          transition={{ delay: idx * 0.05 }}
                         >
                           <Link
                             href={link.href}
                             onClick={() => setIsMenuOpen(false)}
                             className={cn(
                               "flex items-center w-full py-4 px-4 transition-all duration-200 text-sm font-medium tracking-wide border-b border-gray-100 font-fauna",
-                              (pathname === "/products" && typeof window !== 'undefined' && window.location.search.includes(`condition=${link.href.split('=')[1]}`)) ? "bg-primary/5 text-primary" : "text-gray-700 hover:text-primary"
+                              pathname === link.href ? "bg-primary/5 text-primary" : "text-gray-700 hover:text-primary"
                             )}
                           >
                             {link.label}
                           </Link>
                         </motion.div>
                       ))}
-
-
-
-                      <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
-                      >
-                        <Link
-                          href="/contact"
-                          onClick={() => setIsMenuOpen(false)}
-                          className={cn(
-                            "flex items-center w-full py-4 px-4 transition-all duration-200 text-sm font-medium tracking-wide font-fauna",
-                            pathname === "/contact" ? "bg-primary/5 text-primary" : "text-gray-700 hover:text-primary"
-                          )}
-                        >
-                          Contact
-                        </Link>
-                      </motion.div>
                     </nav>
                   </div>
 
-                  {/* Footer with Cart Actions */}
+                  {/* Footer with Actions */}
                   <div className="border-t border-gray-100 p-4 space-y-3 bg-white">
+                    <div className="flex items-center gap-2">
+                       <Button 
+                        variant="outline"
+                        className="flex-1 h-12 rounded-sm border-gray-200"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                         <User className="w-4 h-4 mr-2" />
+                         Account
+                      </Button>
+                      <Button 
+                        variant="outline"
+                        className="flex-1 h-12 rounded-sm border-gray-200"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                         <Heart className="w-4 h-4 mr-2" />
+                         Favorites
+                      </Button>
+                    </div>
                     <Button 
                       className="w-full h-12 rounded-sm font-bold bg-primary text-primary-foreground hover:bg-primary-600 transition-all cursor-pointer" 
                       onClick={() => {
@@ -305,7 +299,7 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
                       }}
                     >
                       <ShoppingCart className="w-4 h-4 mr-2" />
-                      Open Cart
+                      Open Cart ({totalItems})
                     </Button>
                   </div>
                 </div>
@@ -314,21 +308,6 @@ export default function Header({ isStatic = false, forceScrolled = false }: { is
           )}
         </AnimatePresence>
       </header>
-
-      {/* Mobile Floating Cart Button - Bottom Left */}
-    <button
-        onClick={() => toggleCartModal()}
-        className="fixed bottom-2 left-2 z-40 md:hidden w-12 h-12 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center hover:bg-primary-600 transition-all active:scale-95 cursor-pointer"
-        aria-label="Cart"
-      >
-        <ShoppingCart className="w-5 h-5" />
-        <span className={cn(
-          "absolute top-0 right-0 w-5 h-5 rounded-full text-white text-[9px] font-light flex items-center justify-center shadow-sm transition-colors border-2 border-primary",
-          totalItems === 0 ? "bg-yellow-500" : "bg-green-500"
-        )}>
-          {totalItems}
-        </span>
-      </button>
     </>
   )
 }

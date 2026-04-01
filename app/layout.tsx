@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, Cairo, Dancing_Script } from "next/font/google";
+import { Inter, Dancing_Script } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 import { CartProvider } from "@/components/cart-provider";
@@ -13,11 +13,6 @@ import "./globals.css";
 const inter = Inter({ 
   subsets: ["latin"],
   variable: "--font-inter",
-});
-
-const cairo = Cairo({
-  subsets: ["latin", "arabic"],
-  variable: "--font-cairo",
 });
 
 const dancingScript = Dancing_Script({
@@ -259,7 +254,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${cairo.variable} ${dancingScript.variable} antialiased`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${dancingScript.variable} antialiased`} suppressHydrationWarning>
         <SplashScreen />
         <CartProvider>
           {children}
